@@ -1,4 +1,4 @@
-// constants
+/* constants */
 @import "./styles/colors";
 @import "./styles/typography";
 @import "./styles/breakpoint";
@@ -7,19 +7,20 @@
 @import "./styles/dimensions";
 @import "./styles/grid-variables";
 
-// base
+/* base */
 @import "./styles/fonts";
 @import "./styles/normalize";
 @import "./styles/reset";
+@import "./styles/globals";
 
-// mixins
+/* mixins */
 @import "./styles/text-style";
 @import "./styles/responsive";
 @import "./styles/positions";
 @import "./styles/flexbox";
 @import "./styles/star-rating";
 
-// modules
+/* modules */
 @import "./styles/tags";
 @import "./styles/avatars";
 @import "./styles/star-ratings";
@@ -29,5 +30,5 @@
 @import "./styles/pagination";
 @import "./styles/icons";
 
-// layouts
+/* layouts */
 @import "./styles/grids";
