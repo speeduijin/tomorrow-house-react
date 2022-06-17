@@ -1,3 +1,4 @@
+// constants
 @import "./styles/colors";
 @import "./styles/typography";
 @import "./styles/breakpoint";
@@ -6,13 +7,18 @@
 @import "./styles/dimensions";
 @import "./styles/grid-variables";
 
+// base
 @import "./styles/fonts";
 @import "./styles/normalize";
 @import "./styles/reset";
 
+// mixins
 @import "./styles/text-style";
 @import "./styles/responsive";
+@import "./styles/positions";
 
+// modules
 @import "./styles/icons";
 
+// layouts
 @import "./styles/grids";
