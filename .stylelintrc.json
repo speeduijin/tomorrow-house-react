@@ -183,7 +183,7 @@
     "scss/at-rule-no-unknown": true,
     "scss/comment-no-empty": true,
     "scss/dollar-variable-colon-space-after": "always",
-    "scss/dollar-variable-first-in-block": true,
+    "scss/dollar-variable-empty-line-before": null,
     "scss/dollar-variable-pattern": "^.[a-z]+(-[a-z0-9])*",
     "scss/double-slash-comment-empty-line-before": "always",
     "scss/no-duplicate-mixins": true,
