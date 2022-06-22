@@ -178,6 +178,7 @@
       }
     ],
     "unit-no-unknown": true,
+    "value-list-comma-newline-after": null,
     "value-list-comma-space-before": "never",
     "value-no-vendor-prefix": [
       true,
