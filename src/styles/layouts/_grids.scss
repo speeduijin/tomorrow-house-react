@@ -1,3 +1,7 @@
+@use "../constants" as const;
+@use "../mixins" as mixin;
+@use "sass:math";
+
 /*
  * MoBILE (<768px) --------------------------------
  * fixture                             sm
@@ -26,7 +30,7 @@
 
 .container {
   width: 100%;
-  padding: 0 $sm-margin;
+  padding: 0 const.$sm-margin;
   margin: 0 auto;
 
   .row {
@@ -35,33 +39,33 @@
   }
 
   [class^="col-"] {
-    padding: 0 $gutter / 2;
+    padding: 0 math.div(const.$gutter, 2);
   }
 
-  @for $i from 1 through $sm-columns {
+  @for $i from 1 through const.$sm-columns {
     .col-sm-#{$i} {
-      width: floor($i / $sm-columns);
+      width: math.percentage(math.div($i, const.$sm-columns));
     }
   }
 
-  @include responsive(T) {
-    max-width: $md-max-container;
-    padding: 0 $md-margin;
+  @include mixin.responsive(T) {
+    max-width: const.$md-max-container;
+    padding: 0 const.$md-margin;
 
-    @for $i from 1 through $md-columns {
+    @for $i from 1 through const.$md-columns {
       .col-md-#{$i} {
-        width: percentage($i / $md-columns);
+        width: math.percentage(math.div($i, const.$md-columns));
       }
     }
   }
 
-  @include responsive(D) {
-    max-width: $lg-max-container;
+  @include mixin.responsive(D) {
+    max-width: const.$lg-max-container;
     padding: 0;
 
-    @for $i from 1 through $lg-columns {
+    @for $i from 1 through const.$lg-columns {
       .col-lg-#{$i} {
-        width: ($lg-unit + $gutter) * $i;
+        width: (const.$lg-unit + const.$gutter) * $i;
       }
     }
   }
