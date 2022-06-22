@@ -1,3 +1,5 @@
+@use "../constants" as const;
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -11,41 +13,41 @@
 }
 
 .sm-only {
-  @media screen and (min-width: $md-breakpoint) {
+  @media screen and (min-width: const.$md-breakpoint) {
     display: none !important;
   }
 }
 
 .md-only {
-  @media screen and (max-width: calc($md-breakpoint - 1px)) {
+  @media screen and (max-width: const.$md-breakpoint - 1) {
     display: none !important;
   }
 
-  @media screen and (min-width: $lg-breakpoint) {
+  @media screen and (min-width: const.$lg-breakpoint) {
     display: none !important;
   }
 }
 
 .lg-only {
-  @media screen and (max-width: calc($lg-breakpoint - 1px)) {
+  @media screen and (max-width: const.$lg-breakpoint - 1) {
     display: none !important;
   }
 }
 
 .sm-hidden {
-  @media screen and (max-width: calc($md-breakpoint - 1px)) {
+  @media screen and (max-width: const.$md-breakpoint - 1) {
     display: none !important;
   }
 }
 
 .md-hidden {
-  @media screen and (min-width: $md-breakpoint) and (max-width: calc($lg-breakpoint - 1px)) {
+  @media screen and (min-width: const.$md-breakpoint) and (max-width: const.$lg-breakpoint - 1) {
     display: none !important;
   }
 }
 
 .lg-hidden {
-  @media screen and (min-width: $lg-breakpoint) {
+  @media screen and (min-width: const.$lg-breakpoint) {
     display: none !important;
   }
 }
