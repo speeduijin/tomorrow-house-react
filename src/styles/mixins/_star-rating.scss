@@ -1,12 +1,15 @@
+@use "../constants" as const;
+@use "./flexbox" as flex;
+
 @mixin star-rating($size) {
-  @include flexbox(start);
+  @include flex.flexbox(start);
   font-size: $size;
 
   .ic-star {
-    color: $border;
+    color: const.$border;
 
     &.is-active {
-      color: $blue;
+      color: const.$blue;
     }
   }
 }
