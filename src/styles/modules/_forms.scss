@@ -1,21 +1,24 @@
+@use "../constants" as const;
+@use "../mixins" as mixin;
+
 %form-base {
-  @include text-style(16, $primary);
+  @include mixin.text-style(16, const.$primary);
   display: block;
   width: 100%;
   height: 40px;
   padding: 0 16px;
-  background-color: $white;
-  border: 1px solid $border;
+  background-color: const.$white;
+  border: 1px solid const.$border;
   border-radius: 4px;
   transition: background-color 200ms ease-in-out;
   appearance: none;
 
   &::placeholder {
-    color: $tertiary;
+    color: const.$tertiary;
   }
 
   &:not(:disabled):hover {
-    background-color: $background;
+    background-color: const.$background;
   }
 
   &:disabled {
@@ -35,11 +38,11 @@
 
   &.is-active {
     .form-select {
-      border-color: $blue;
+      border-color: const.$blue;
     }
 
     .ic-caret {
-      color: $blue;
+      color: const.$blue;
     }
   }
 
@@ -49,10 +52,10 @@
   }
 
   .ic-caret {
-    @include pos-center-y;
+    @include mixin.pos-center-y;
     right: 8px;
     font-size: 24px;
-    color: $tertiary;
+    color: const.$tertiary;
     pointer-events: none;
   }
 }
@@ -66,9 +69,9 @@
   }
 
   .ic-search {
-    @include pos-center-y;
+    @include mixin.pos-center-y;
     left: 10px;
     font-size: 20px;
-    color: $secondary;
+    color: const.$secondary;
   }
 }

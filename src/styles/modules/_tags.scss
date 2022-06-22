@@ -1,0 +1,30 @@
+@use "../constants" as const;
+@use "../mixins" as mixin;
+
+%tag-base {
+  /* 공통 스타일 */
+  @include mixin.inline-flexbox;
+  @include mixin.text-style(12);
+  height: 20px;
+  padding: 0 6px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.tag-red {
+  @extend %tag-base;
+  color: const.$white;
+  background-color: const.$red;
+}
+
+.tag-green {
+  @extend %tag-base;
+  color: const.$white;
+  background-color: const.$green;
+}
+
+.tag-grey {
+  @extend %tag-base;
+  color: const.$secondary;
+  background-color: const.$border;
+}

@@ -1,13 +1,16 @@
+@use "../constants" as const;
+@use "../mixins" as mixin;
+
 %price-base {
-  @include inline-flexbox(start);
+  @include mixin.inline-flexbox(start);
 
   .amount {
-    font-family: $font-price;
+    font-family: const.$font-price;
     line-height: 1;
   }
 
   .currency {
-    font-family: $font-main;
+    font-family: const.$font-main;
   }
 }
 
@@ -15,7 +18,7 @@
 .price-20,
 .price-32 {
   @extend %price-base;
-  color: $dark;
+  color: const.$dark;
 
   .amount {
     font-weight: 700;
@@ -33,7 +36,7 @@
   }
 
   .currency {
-    @include text-style(14);
+    @include mixin.text-style(14);
   }
 }
 
@@ -43,7 +46,7 @@
   }
 
   .currency {
-    @include text-style(16);
+    @include mixin.text-style(16);
   }
 }
 
@@ -62,7 +65,7 @@
 
 .price-off {
   @extend %price-base;
-  color: $secondary;
+  color: const.$secondary;
 
   .amount {
     font-size: 14px;
@@ -72,7 +75,7 @@
   }
 
   .currency {
-    @include text-style(14);
+    @include mixin.text-style(14);
     font-weight: 400;
   }
 }
