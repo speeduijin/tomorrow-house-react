@@ -1,0 +1,32 @@
+@use "../constants" as const;
+@use "../mixins" as mixin;
+
+.global-header {
+  width: 100%;
+  height: const.$gnb-height-sm + const.$lnb-height-sm;
+
+  .gnb,
+  .lnb {
+    position: fixed;
+    left: 0;
+    width: 100%;
+  }
+
+  .gnb {
+    top: 0;
+    z-index: const.$gnb-level;
+  }
+
+  .lnb {
+    top: const.$gnb-height-sm;
+    z-index: const.$lnb-level;
+  }
+
+  @include mixin.responsive(T) {
+    height: const.$gnb-height-md + const.$lnb-height-md;
+
+    .lnb {
+      top: const.$gnb-height-md;
+    }
+  }
+}
