@@ -3,5 +3,14 @@
 @use "./base/reset";
 @use "./base/globals";
 
+@use "./modules/avatars";
+@use "./modules/buttons";
+@use "./modules/forms";
+@use "./modules/icons";
+@use "./modules/pagenation";
+@use "./modules/prices";
+@use "./modules/star-ratings";
+@use "./modules/tags";
+
 @use "./layouts/grids";
 @use "./layouts/global-header";
