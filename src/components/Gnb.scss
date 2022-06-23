@@ -1,0 +1,127 @@
+@use "../styles/constants" as const;
+@use "../styles/mixins" as mixin;
+
+.gnb {
+  position: relative;
+  background-color: const.$white;
+  border-bottom: 1px const.$border;
+
+  &-wrapper {
+    @include mixin.flexbox(between);
+    height: const.$gnb-height-sm - 1px;
+  }
+
+  &-right {
+    .button-group {
+      @include mixin.flexbox(end);
+    }
+
+    .gnb-icon-button.is-search {
+      margin-right: 4px;
+    }
+  }
+
+  .logo {
+    @include mixin.pos-center;
+
+    a {
+      display: block;
+    }
+
+    img {
+      display: block;
+      width: auto;
+      height: 20px;
+    }
+  }
+
+  @include mixin.responsive(T) {
+    &-wrapper {
+      height: const.$gnb-height-md - 1px;
+    }
+
+    &-left {
+      @include mixin.flexbox(start);
+    }
+
+    &-right {
+      @include mixin.flexbox(end);
+
+      .button-group {
+        margin-right: 24px;
+      }
+
+      .gnb-icon-button {
+        margin-right: 8px;
+      }
+
+      .gnb-auth {
+        margin-left: 8px;
+
+        a {
+          @include mixin.text-style(14, const.$secondary);
+          font-weight: 700;
+
+          &:first-child {
+            margin-right: 12px;
+          }
+
+          &:hover {
+            color: const.$blue;
+          }
+        }
+      }
+    }
+
+    .logo {
+      position: static;
+      margin-right: 32px;
+      transform: none;
+
+      img {
+        height: 24px;
+      }
+    }
+
+    .btn-primary {
+      width: 88px;
+
+      i {
+        margin-left: 4px;
+      }
+    }
+  }
+
+  @include mixin.responsive(D) {
+    &-search {
+      position: relative;
+      width: 264px;
+      margin-right: 24px;
+
+      .input-group {
+        width: 100%;
+      }
+
+      .search-history {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        display: none;
+        width: 100%;
+        padding: 16px 8px 8px;
+        background-color: const.$white;
+        border: 1px solid const.$border;
+        border-radius: 4px;
+        box-shadow: const.$dropdown-shadow;
+
+        &.is-active {
+          display: block;
+        }
+
+        &-header {
+          padding: 0 8px;
+        }
+      }
+    }
+  }
+}
