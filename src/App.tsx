@@ -1,4 +1,4 @@
-import GlobalHeader from './components/GlobalHeader'
+import GlobalHeader from './layouts/GlobalHeader'
 
 function App() {
   return (
