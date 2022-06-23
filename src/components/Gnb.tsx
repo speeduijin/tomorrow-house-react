@@ -1,6 +1,7 @@
 import Logo from '../assets/images/Logo.svg'
 import GnbNav from './GnbNav'
 import GnbIconButton from './GnbIconButton'
+import Mymenu from './Mymenu'
 import './Gnb.scss'
 
 function Gnb() {
@@ -117,35 +118,7 @@ function Gnb() {
                     iClassName="ic-cart"
                   />
 
-                  <div className="my-menu sm-hidden">
-                    <button
-                      className="my-menu-button"
-                      type="button"
-                      aria-label="마이메뉴 열기 버튼"
-                    >
-                      <img
-                        src="./assets/images/img-user-01.jpg"
-                        alt="사달라 아저씨"
-                      />
-                    </button>
-
-                    <div className="my-menu-content">
-                      <ul className="my-menu-list">
-                        <li className="my-menu-item">
-                          <a href="/">마이페이지</a>
-                        </li>
-                        <li className="my-menu-item">
-                          <a href="/">나의 쇼핑</a>
-                        </li>
-                        <li className="my-menu-item">
-                          <a href="/">이벤트</a>
-                        </li>
-                        <li className="my-menu-item">
-                          <button type="button">로그아웃</button>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  <Mymenu />
                 </div>
 
                 {/* NOTE: 로그인을 하지 않은 경우  */}

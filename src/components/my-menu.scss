@@ -1,0 +1,104 @@
+@use "../styles/constants" as const;
+@use "../styles/mixins" as mixin;
+
+.my-menu {
+  $button-size: 32px;
+  $tooltip-size: 12px;
+
+  position: relative;
+
+  &.is-active {
+    .my-menu-button {
+      border-color: const.$blue;
+    }
+
+    .my-menu-content {
+      visibility: visible;
+      opacity: 1;
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  &-button {
+    width: $button-size;
+    height: $button-size;
+    overflow: hidden;
+    background-image: url("../assets/images/img-user-default.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    border: 3px solid const.$white;
+    border-radius: 50%;
+    transition: border-color 200ms ease-in-out;
+
+    &:hover {
+      border-color: const.$blue;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-content {
+    @include mixin.pos-center-x;
+    top: $button-size + $tooltip-size + 8px;
+    visibility: hidden;
+    border-radius: 4px;
+    box-shadow: const.$dropdown-shadow;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out,
+      visibility 200ms ease-in-out;
+    transform: translate3d(-50%, -10px, 0);
+
+    &::before,
+    &::after {
+      @include mixin.pos-center-x;
+      top: -#{$tooltip-size * 2};
+      display: block;
+      width: 0;
+      height: 0;
+      content: "";
+      border-top: $tooltip-size solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: $tooltip-size solid transparent;
+      border-left: 10px solid transparent;
+    }
+
+    &::before {
+      border-bottom-color: const.$border;
+    }
+
+    &::after {
+      top: -#{$tooltip-size * 2 - 2px};
+      border-bottom-color: const.$white;
+    }
+  }
+
+  &-list {
+    width: 200px;
+    padding: 8px;
+    background-color: const.$white;
+    border: 1px solid const.$border;
+    border-radius: 4px;
+  }
+
+  &-item {
+    a,
+    button {
+      @include mixin.flexbox(start);
+      @include mixin.text-style(16, const.$primary);
+      width: 100%;
+      height: 44px;
+      padding: 0 8px;
+      border-radius: 2px;
+
+      &:hover {
+        background-color: const.$background;
+      }
+    }
+  }
+}
