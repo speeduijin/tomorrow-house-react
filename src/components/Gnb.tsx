@@ -1,5 +1,6 @@
 import Logo from '../assets/images/Logo.svg'
 import GnbNav from './GnbNav'
+import GnbIconButton from './GnbIconButton'
 import './Gnb.scss'
 
 function Gnb() {
@@ -18,13 +19,12 @@ function Gnb() {
 
                 <GnbNav />
 
-                <button
-                  className="gnb-icon-button is-menu sm-only"
-                  type="button"
-                  aria-label="메뉴 열기 버튼"
-                >
-                  <i className="ic-menu"></i>
-                </button>
+                <GnbIconButton
+                  isButton="true"
+                  className="is-menu sm-only"
+                  ariaLabel="메뉴 열기 버튼"
+                  iClassName="ic-menu"
+                />
               </div>
 
               <div className="gnb-right">
@@ -89,38 +89,33 @@ function Gnb() {
 
                 {/* NOTE: 로그인을 한 경우   */}
                 <div className="button-group">
-                  <button
-                    className="gnb-icon-button is-search lg-hidden"
-                    type="button"
-                    aria-label="검색창 열기 버튼"
-                  >
-                    <i className="ic-search"></i>
-                  </button>
+                  <GnbIconButton
+                    isButton="true"
+                    className="is-search lg-hidden"
+                    ariaLabel="검색창 열기 버튼"
+                    iClassName="ic-search"
+                  />
 
-                  <a
-                    className="gnb-icon-button sm-hidden"
-                    href="/"
-                    aria-label="스크랩북 페이지로 이동"
-                  >
-                    <i className="ic-bookmark"></i>
-                  </a>
+                  <GnbIconButton
+                    isButton="false"
+                    className="sm-hidden"
+                    ariaLabel="스크랩북 페이지로 이동"
+                    iClassName="ic-bookmark"
+                  />
 
-                  <a
-                    className="gnb-icon-button sm-hidden"
-                    href="/"
-                    aria-label="내 소식 페이지로 이동"
-                  >
-                    <i className="ic-bell"></i>
-                  </a>
+                  <GnbIconButton
+                    isButton="false"
+                    className="sm-hidden"
+                    ariaLabel="내 소식 페이지로 이동"
+                    iClassName="ic-bell"
+                  />
 
-                  <a
-                    className="gnb-icon-button is-cart"
-                    href="/"
-                    aria-label="장바구니 페이지로 이동"
-                  >
-                    <i className="ic-cart"></i>
-                    <strong className="badge">5</strong>
-                  </a>
+                  <GnbIconButton
+                    isButton="false"
+                    className="is-cart"
+                    ariaLabel="장바구니 페이지로 이동"
+                    iClassName="ic-cart"
+                  />
 
                   <div className="my-menu sm-hidden">
                     <button

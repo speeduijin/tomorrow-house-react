@@ -1,0 +1,59 @@
+@use "../styles/constants" as const;
+@use "../styles/mixins" as mixin;
+
+.gnb-icon-button {
+  $badge-size: 16px;
+
+  @include mixin.flexbox;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+  color: const.$secondary;
+  border-radius: 50%;
+  transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+
+  &.is-menu {
+    color: const.$blue;
+
+    &:active {
+      color: const.$blue-dark;
+    }
+  }
+
+  &.is-cart {
+    i {
+      position: relative;
+      top: 1px;
+      right: 1px;
+    }
+  }
+
+  &:active {
+    color: const.$primary;
+  }
+
+  .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    min-width: $badge-size;
+    height: $badge-size;
+    padding: 0 4px;
+    font-size: 10px;
+    line-height: 16px;
+    color: const.$white;
+    text-align: center;
+    letter-spacing: -0.01em;
+    background-color: const.$red;
+    border-radius: $badge-size / 2;
+  }
+
+  @include mixin.responsive(T) {
+    &:hover {
+      color: const.$white;
+      background-color: const.$blue;
+    }
+  }
+}
