@@ -1,8 +1,8 @@
 import Logo from '../assets/images/Logo.svg'
-import GnbNav from './GnbNav'
-import GnbIconButton from './GnbIconButton'
-import SearchHistory from './SearchHistory'
-import Mymenu from './Mymenu'
+import GnbNav from '../components/GnbNav'
+import GnbIconButton from '../components/GnbIconButton'
+import SearchHistory from '../components/SearchHistory'
+import Mymenu from '../components/Mymenu'
 import './Gnb.scss'
 
 function Gnb() {

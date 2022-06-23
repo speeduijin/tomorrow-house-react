@@ -1,4 +1,4 @@
-import Gnb from '../components/Gnb'
+import Gnb from './Gnb'
 import Lnb from './Lnb'
 import './GlobalHeader.scss'
 

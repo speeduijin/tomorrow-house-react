@@ -4,7 +4,7 @@
 .gnb {
   position: relative;
   background-color: const.$white;
-  border-bottom: 1px const.$border;
+  border-bottom: 1px solid const.$border;
 
   &-wrapper {
     @include mixin.flexbox(between);
