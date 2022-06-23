@@ -1,0 +1,59 @@
+@use "../styles/constants" as const;
+@use "../styles/mixins" as mixin;
+
+.search-history {
+  $close-button-size: 32px;
+
+  &-header {
+    @include mixin.flexbox(between);
+    margin-bottom: 8px;
+
+    .title,
+    button {
+      @include mixin.text-style(13, const.$secondary);
+      font-weight: 400;
+    }
+  }
+
+  &-content {
+    .placeholder {
+      @include mixin.flexbox(start);
+      @include mixin.text-style(16, const.$tertiary);
+      width: 100%;
+      height: 44px;
+      padding: 0 8px;
+    }
+  }
+
+  &-item {
+    position: relative;
+    border-radius: 2px;
+
+    &:hover {
+      background-color: const.$background;
+    }
+
+    .word-button {
+      @include mixin.text-style(16, const.$primary);
+      width: 100%;
+      padding: 10px $close-button-size 10px 4px;
+      font-weight: 400;
+      text-align: left;
+    }
+
+    .delete-button {
+      @include mixin.flexbox;
+      position: absolute;
+      top: 6px;
+      right: 0;
+      width: $close-button-size;
+      height: $close-button-size;
+      font-size: 16px;
+      color: const.$tertiary;
+
+      &:hover {
+        color: const.$primary;
+      }
+    }
+  }
+}
