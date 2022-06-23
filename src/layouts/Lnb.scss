@@ -1,0 +1,61 @@
+@use "../styles/constants" as const;
+@use "../styles/mixins" as mixin;
+
+.lnb {
+  $lnb-link-padding: 8px;
+
+  @include mixin.no-scrollbar;
+  overflow-x: auto;
+  background-color: const.$white;
+
+  &-list {
+    @include mixin.inline-flexbox(start);
+    height: const.$lnb-height-sm;
+    padding: 0 #{const.$grid-margin - $lnb-link-padding};
+    margin-left: -#{const.$grid-margin};
+    white-space: nowrap;
+    border-bottom: 1px solid const.$border;
+  }
+
+  &-item {
+    &.is-active {
+      a {
+        color: const.$blue;
+        border-bottom-color: const.$blue;
+      }
+    }
+
+    a {
+      @include mixin.inline-flexbox;
+      @include mixin.text-style(13, const.$dark);
+      height: const.$lnb-height-sm;
+      padding: 0 $lnb-link-padding;
+      font-weight: 700;
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        color: const.$blue;
+      }
+    }
+  }
+
+  @include mixin.responsive(T) {
+    height: const.$lnb-height-md;
+    overflow-x: visible;
+    border-bottom: 1px solid const.$border;
+
+    &-list {
+      height: auto;
+      padding: 0;
+      margin-left: 0;
+      border-bottom: 0;
+    }
+
+    &-item {
+      a {
+        @include mixin.text-style(14);
+        height: const.$lnb-height-md;
+      }
+    }
+  }
+}

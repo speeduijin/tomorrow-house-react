@@ -1,10 +1,12 @@
 import Gnb from '../components/Gnb'
+import Lnb from './Lnb'
 import './GlobalHeader.scss'
 
 function GlobalHeader() {
   return (
     <header className="global-header">
       <Gnb />
+      <Lnb />
     </header>
   )
 }
