@@ -1,0 +1,104 @@
+@use "../styles/constants" as const;
+@use "../styles/mixins" as mixin;
+
+.sidebar {
+  $sidebar-width: 240px;
+
+  @include mixin.no-scrollbar;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: const.$sidebar-level;
+  width: $sidebar-width;
+  height: 100vh;
+  padding: 32px 20px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background-color: const.$white;
+  transition: transform 300ms ease-in-out;
+  transform: translate3d(-#{$sidebar-width}, 0, 0);
+
+  &.is-active {
+    transform: translate3d(0, 0, 0);
+  }
+
+  &-header {
+    padding: 0 12px;
+
+    .logo {
+      @include mixin.flexbox(start);
+
+      a {
+        display: block;
+      }
+
+      img {
+        display: block;
+        width: auto;
+        height: 20px;
+      }
+    }
+  }
+
+  &-user,
+  &-auth {
+    @include mixin.flexbox(start);
+
+    height: 88px;
+  }
+
+  &-user {
+    a {
+      @include mixin.flexbox(start);
+      @include mixin.text-style(14, const.$primary);
+      width: 100%;
+      font-weight: 700;
+    }
+
+    .avatar-24 {
+      flex-grow: 0;
+      margin-right: 8px;
+    }
+
+    .username {
+      @include mixin.truncate;
+      flex-grow: 1;
+    }
+  }
+
+  &-auth {
+    @include mixin.flexbox(between);
+
+    a {
+      width: 84px;
+    }
+  }
+
+  &-nav {
+    .drawer-menu {
+      border-top: 1px solid const.$border;
+
+      &.is-expert {
+        border-bottom: 1px solid const.$border;
+      }
+    }
+  }
+
+  &-user-menu {
+    margin-top: 16px;
+
+    .user-menu-item {
+      a {
+        @include mixin.flexbox(start);
+        @include mixin.text-style(14, const.$primary);
+        width: 100%;
+        height: 36px;
+        padding: 0 12px;
+
+        &:active {
+          color: const.$blue;
+        }
+      }
+    }
+  }
+}
