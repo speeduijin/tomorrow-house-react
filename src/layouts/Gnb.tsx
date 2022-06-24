@@ -22,7 +22,6 @@ function Gnb() {
                 <GnbNav />
 
                 <GnbIconButton
-                  isButton="true"
                   className="is-menu sm-only"
                   ariaLabel="메뉴 열기 버튼"
                   iClassName="ic-menu"
@@ -46,28 +45,24 @@ function Gnb() {
                 {/* NOTE: 로그인을 한 경우   */}
                 <div className="button-group">
                   <GnbIconButton
-                    isButton="true"
                     className="is-search lg-hidden"
                     ariaLabel="검색창 열기 버튼"
                     iClassName="ic-search"
                   />
 
                   <GnbIconButton
-                    isButton="false"
                     className="sm-hidden"
                     ariaLabel="스크랩북 페이지로 이동"
                     iClassName="ic-bookmark"
                   />
 
                   <GnbIconButton
-                    isButton="false"
                     className="sm-hidden"
                     ariaLabel="내 소식 페이지로 이동"
                     iClassName="ic-bell"
                   />
 
                   <GnbIconButton
-                    isButton="false"
                     className="is-cart"
                     ariaLabel="장바구니 페이지로 이동"
                     iClassName="ic-cart"
