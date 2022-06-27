@@ -1,4 +1,4 @@
-import './Gnb-icon-buttons.scss'
+import './GnbIconButtons.scss'
 
 interface GnbIconButtonProps {
   className: string
@@ -7,40 +7,28 @@ interface GnbIconButtonProps {
 }
 
 const GnbIconButton = (props: GnbIconButtonProps) => {
-  if (
-    props.className.includes('is-menu') ||
-    props.className.includes('is-search')
-  ) {
+  if (props.ariaLabel.includes('버튼')) {
     return (
       <button
-        className={`gnb-icon-button ${props.className}`}
+        className={`GnbIconButton ${props.className}`}
         type="button"
         aria-label={props.ariaLabel}
       >
         <i className={props.iClassName}></i>
       </button>
     )
-  } else {
-    return (
-      <a
-        className={`gnb-icon-button ${props.className}`}
-        href="/"
-        aria-label={props.ariaLabel}
-      >
-        <i className={props.iClassName}></i>
-        {props.className === 'is-cart' && <strong className="badge">5</strong>}
-      </a>
-      // } else {
-      //   return (
-      //     <a
-      //       className={`gnb-icon-button ${props.className}`}
-      //       href="/"
-      //       aria-label={props.ariaLabel}
-      //     >
-      //       <i className={props.iClassName}></i>
-      //     </a>
-    )
   }
+  return (
+    <a
+      className={`GnbIconButton ${props.className}`}
+      href="/"
+      aria-label={props.ariaLabel}
+    >
+      <i className={props.iClassName}></i>
+
+      {props.className === 'is-cart' && <strong className="badge">5</strong>}
+    </a>
+  )
 }
 
 export default GnbIconButton
