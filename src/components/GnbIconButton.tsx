@@ -7,7 +7,7 @@ interface GnbIconButtonProps {
   openSidebar?: () => void
 }
 
-const GnbIconButton = (props: GnbIconButtonProps) => {
+function GnbIconButton(props: GnbIconButtonProps) {
   if (props.ariaLabel.includes('버튼')) {
     return (
       <button
