@@ -8,7 +8,7 @@ interface OverlayProps {
 function Overlay(props: OverlayProps) {
   return (
     <div
-      className={`overlay ${props.isActiveSidebar ? 'is-active' : ''}`}
+      className={`overlay ${props.isActiveSidebar && 'is-active'}`}
       aria-hidden
       onClick={props.closeSidebar}
     ></div>
