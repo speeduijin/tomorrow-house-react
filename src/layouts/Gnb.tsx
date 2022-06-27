@@ -7,12 +7,12 @@ import './Gnb.scss'
 
 function Gnb() {
   return (
-    <div className="gnb">
+    <div className="Gnb">
       <div className="container">
         <div className="row">
           <div className="col-sm-4">
-            <div className="gnb-wrapper">
-              <div className="gnb-left">
+            <div className="Gnb-wrapper">
+              <div className="Gnb-left">
                 <h1 className="logo">
                   <a href="/">
                     <img src={Logo} alt="내일의 집" />
@@ -28,8 +28,8 @@ function Gnb() {
                 />
               </div>
 
-              <div className="gnb-right">
-                <div className="gnb-search lg-only">
+              <div className="Gnb-right">
+                <div className="Gnb-search lg-only">
                   <div className="input-group">
                     <i className="ic-search" aria-hidden></i>
                     <input
@@ -74,20 +74,20 @@ function Gnb() {
                 {/* NOTE: 로그인을 하지 않은 경우  */}
                 {/* <div className="button-group">
                     <button
-                      className="gnb-icon-button is-search lg-hidden"
+                      className="Gnb-icon-button is-search lg-hidden"
                       type="button"
                       aria-label="검색창 열기 버튼"
                     >
                       <i className="ic-search"></i>
                     </button>
                     <a
-                      className="gnb-icon-button is-cart"
+                      className="Gnb-icon-button is-cart"
                       href="/"
                       aria-label="장바구니 페이지로 이동"
                     >
                       <i className="ic-cart"></i>
                     </a>
-                    <div className="gnb-auth sm-hidden">
+                    <div className="Gnb-auth sm-hidden">
                       <a href="/">로그인</a>
                       <a href="/">회원가입</a>
                     </div>

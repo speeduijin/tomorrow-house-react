@@ -1,23 +1,23 @@
 @use "../styles/constants" as const;
 @use "../styles/mixins" as mixin;
 
-.global-header {
+.GlobalHeader {
   width: 100%;
   height: const.$gnb-height-sm + const.$lnb-height-sm;
 
-  .gnb,
-  .lnb {
+  .Gnb,
+  .Lnb {
     position: fixed;
     left: 0;
     width: 100%;
   }
 
-  .gnb {
+  .Gnb {
     top: 0;
     z-index: const.$gnb-level;
   }
 
-  .lnb {
+  .Lnb {
     top: const.$gnb-height-sm;
     z-index: const.$lnb-level;
   }
@@ -25,7 +25,7 @@
   @include mixin.responsive(T) {
     height: const.$gnb-height-md + const.$lnb-height-md;
 
-    .lnb {
+    .Lnb {
       top: const.$gnb-height-md;
     }
   }

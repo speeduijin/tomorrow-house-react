@@ -1,7 +1,7 @@
 @use "../styles/constants" as const;
 @use "../styles/mixins" as mixin;
 
-.lnb {
+.Lnb {
   $lnb-link-padding: 8px;
 
   @include mixin.no-scrollbar;

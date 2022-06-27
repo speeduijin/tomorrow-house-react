@@ -1,7 +1,7 @@
 @use "../styles/constants" as const;
 @use "../styles/mixins" as mixin;
 
-.gnb {
+.Gnb {
   position: relative;
   background-color: const.$white;
   border-bottom: 1px solid const.$border;
@@ -16,7 +16,7 @@
       @include mixin.flexbox(end);
     }
 
-    .gnb-icon-button.is-search {
+    .GnbIconButton.is-search {
       margin-right: 4px;
     }
   }
@@ -51,11 +51,11 @@
         margin-right: 24px;
       }
 
-      .gnb-icon-button {
+      .GnbIconButton {
         margin-right: 8px;
       }
 
-      .gnb-auth {
+      .Gnb-auth {
         margin-left: 8px;
 
         a {
@@ -75,7 +75,7 @@
 
     .logo {
       position: static;
-      margin-right: 32px;
+      padding-right: 32px;
       transform: none;
 
       img {
@@ -102,7 +102,7 @@
         width: 100%;
       }
 
-      .search-history {
+      .SearchHistory {
         position: absolute;
         top: calc(100% + 8px);
         left: 0;

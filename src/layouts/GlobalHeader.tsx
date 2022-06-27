@@ -4,7 +4,7 @@ import './GlobalHeader.scss'
 
 function GlobalHeader() {
   return (
-    <header className="global-header">
+    <header className="GlobalHeader">
       <Gnb />
       <Lnb />
     </header>

@@ -1,7 +1,7 @@
 @use "../styles/constants" as const;
 @use "../styles/mixins" as mixin;
 
-.gnb-nav {
+.GnbNav {
   $padding: 8px;
 
   &-list {

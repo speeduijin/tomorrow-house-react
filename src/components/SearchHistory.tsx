@@ -1,16 +1,16 @@
-import './search-history.scss'
+import './SearchHistory.scss'
 
 function SearchHistory() {
   return (
-    <section className="search-history">
-      <header className="search-history-header">
+    <section className="SearchHistory">
+      <header className="SearchHistory-header">
         <h2 className="title">최근 검색어</h2>
         <button type="button">전체 삭제</button>
       </header>
 
-      <div className="search-history-content">
-        <ol className="search-history-list">
-          <li className="search-history-item">
+      <div className="SearchHistory-content">
+        <ol className="SearchHistory-list">
+          <li className="SearchHistory-item">
             <button className="word-button" type="button">
               김버그
             </button>
@@ -22,7 +22,7 @@ function SearchHistory() {
               <i className="ic-close"></i>
             </button>
           </li>
-          <li className="search-history-item">
+          <li className="SearchHistory-item">
             <button className="word-button" type="button">
               버그
             </button>
@@ -34,7 +34,7 @@ function SearchHistory() {
               <i className="ic-close"></i>
             </button>
           </li>
-          <li className="search-history-item">
+          <li className="SearchHistory-item">
             <button className="word-button" type="button">
               튕김버그
             </button>
