@@ -4,6 +4,7 @@ interface GnbIconButtonProps {
   className: string
   ariaLabel: string
   iClassName: string
+  openSidebar?: () => void
 }
 
 const GnbIconButton = (props: GnbIconButtonProps) => {
@@ -13,6 +14,7 @@ const GnbIconButton = (props: GnbIconButtonProps) => {
         className={`GnbIconButton ${props.className}`}
         type="button"
         aria-label={props.ariaLabel}
+        onClick={props.openSidebar}
       >
         <i className={props.iClassName}></i>
       </button>

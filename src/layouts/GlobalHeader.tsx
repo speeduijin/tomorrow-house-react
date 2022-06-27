@@ -2,10 +2,14 @@ import Gnb from './Gnb'
 import Lnb from './Lnb'
 import './GlobalHeader.scss'
 
-function GlobalHeader() {
+interface GlobalHeaderProps {
+  openSidebar: () => void
+}
+
+function GlobalHeader(props: GlobalHeaderProps) {
   return (
     <header className="GlobalHeader">
-      <Gnb />
+      <Gnb openSidebar={props.openSidebar} />
       <Lnb />
     </header>
   )

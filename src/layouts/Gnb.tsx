@@ -5,7 +5,11 @@ import SearchHistory from '../components/SearchHistory'
 import Mymenu from '../components/Mymenu'
 import './Gnb.scss'
 
-function Gnb() {
+interface GnbProps {
+  openSidebar: () => void
+}
+
+function Gnb(props: GnbProps) {
   return (
     <div className="Gnb">
       <div className="container">
@@ -25,6 +29,7 @@ function Gnb() {
                   className="is-menu sm-only"
                   ariaLabel="메뉴 열기 버튼"
                   iClassName="ic-menu"
+                  openSidebar={props.openSidebar}
                 />
               </div>
 
