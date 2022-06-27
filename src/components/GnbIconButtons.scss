@@ -1,7 +1,7 @@
 @use "../styles/constants" as const;
 @use "../styles/mixins" as mixin;
 
-.gnb-icon-button {
+.GnbIconButton {
   $badge-size: 16px;
 
   @include mixin.flexbox;
