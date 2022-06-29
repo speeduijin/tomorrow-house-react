@@ -8,6 +8,14 @@ interface SidebarProps {
 }
 
 function Sidebar(props: SidebarProps) {
+  const userMenuItems = [
+    '마이페이지',
+    '나의 쇼핑',
+    '스크랩북',
+    '알림',
+    '이벤트',
+  ]
+
   return (
     <aside
       className={`Sidebar sm-only ${props.isActiveSidebar && 'is-active'}`}
@@ -84,21 +92,11 @@ function Sidebar(props: SidebarProps) {
         {/* NOTE: 로그인을 한 경우 */}
         <div className="Sidebar-user-menu">
           <ul className="user-menu-list">
-            <li className="user-menu-item">
-              <a href="/">마이페이지</a>
-            </li>
-            <li className="user-menu-item">
-              <a href="/">나의 쇼핑</a>
-            </li>
-            <li className="user-menu-item">
-              <a href="/">스크랩북</a>
-            </li>
-            <li className="user-menu-item">
-              <a href="/">알림</a>
-            </li>
-            <li className="user-menu-item">
-              <a href="/">이벤트</a>
-            </li>
+            {userMenuItems.map((item, idx) => (
+              <li className="user-menu-item" key={idx}>
+                <a href="/">{item}</a>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
