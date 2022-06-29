@@ -1,7 +1,7 @@
 @use "../styles/constants" as const;
 @use "../styles/mixins" as mixin;
 
-.sidebar {
+.Sidebar {
   $sidebar-width: 240px;
 
   @include mixin.no-scrollbar;

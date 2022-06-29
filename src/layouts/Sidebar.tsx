@@ -10,9 +10,9 @@ interface SidebarProps {
 function Sidebar(props: SidebarProps) {
   return (
     <aside
-      className={`sidebar sm-only ${props.isActiveSidebar ? 'is-active' : ''}`}
+      className={`Sidebar sm-only ${props.isActiveSidebar && 'is-active'}`}
     >
-      <header className="sidebar-header">
+      <header className="Sidebar-header">
         <h1 className="logo">
           <a href="/">
             <img src={Logo} alt="내일의 집" />
@@ -20,7 +20,7 @@ function Sidebar(props: SidebarProps) {
         </h1>
 
         {/* NOTE: 로그인을 한 경우 */}
-        <div className="sidebar-user">
+        <div className="Sidebar-user">
           <a href="/">
             <div className="avatar-24">
               <img src={imgUser01} alt="사달라 아저씨" />
@@ -30,7 +30,7 @@ function Sidebar(props: SidebarProps) {
         </div>
 
         {/* NOTE: 로그인을 하지 않은 경우 */}
-        {/* <div className="sidebar-auth">
+        {/* <div className="Sidebar-auth">
           <a className="btn-outlined btn-40" href="/">
             로그인
           </a>
@@ -40,7 +40,7 @@ function Sidebar(props: SidebarProps) {
         </div> */}
       </header>
 
-      <nav className="sidebar-nav">
+      <nav className="Sidebar-nav">
         <h2 className="visually-hidden">메뉴</h2>
         <DrawerMenu
           className="is-community"
@@ -82,7 +82,7 @@ function Sidebar(props: SidebarProps) {
         />
 
         {/* NOTE: 로그인을 한 경우 */}
-        <div className="sidebar-user-menu">
+        <div className="Sidebar-user-menu">
           <ul className="user-menu-list">
             <li className="user-menu-item">
               <a href="/">마이페이지</a>
