@@ -13,7 +13,7 @@ interface DrawerMenuProps {
 
 function DrawerMenu(props: DrawerMenuProps) {
   return (
-    // 'is-stre' is-active 설정
+    // 'is-store' is-active 설정
     <div
       className={`DrawerMenu ${props.className} ${
         props.isOpen[props.id] ? 'is-open' : ''

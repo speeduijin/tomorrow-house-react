@@ -58,7 +58,7 @@ function Sidebar(props: SidebarProps) {
   ]
 
   const isOpenInitial: boolean[] = Array(drawMenuInfo.length).fill(false)
-  // 'is-stre' is-active 설정
+  // 'is-store' is-active 설정
   isOpenInitial[1] = true
 
   const [isOpen, setIsOpen] = useState(isOpenInitial)
