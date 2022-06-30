@@ -1,51 +1,47 @@
 import './SearchHistory.scss'
 
-function SearchHistory() {
+interface SearchHistoryProps {
+  searchHistoryitems: string[]
+  isActiveSearchHistory: boolean
+  deleteAllSearchHistoryItems: () => void
+  deleteSearchHistoryItem: (key: number) => void
+}
+
+function SearchHistory(props: SearchHistoryProps) {
   return (
-    <section className="SearchHistory">
+    <section
+      className={`SearchHistory ${
+        props.isActiveSearchHistory ? 'is-active' : ''
+      }`}
+    >
       <header className="SearchHistory-header">
         <h2 className="title">최근 검색어</h2>
-        <button type="button">전체 삭제</button>
+        <button type="button" onClick={props.deleteAllSearchHistoryItems}>
+          전체 삭제
+        </button>
       </header>
 
-      <div className="SearchHistory-content">
+      <div className="SearchHistory-content ">
         <ol className="SearchHistory-list">
-          <li className="SearchHistory-item">
-            <button className="word-button" type="button">
-              김버그
-            </button>
-            <button
-              className="delete-button"
-              type="button"
-              aria-label="검색어 삭제"
-            >
-              <i className="ic-close"></i>
-            </button>
-          </li>
-          <li className="SearchHistory-item">
-            <button className="word-button" type="button">
-              버그
-            </button>
-            <button
-              className="delete-button"
-              type="button"
-              aria-label="검색어 삭제"
-            >
-              <i className="ic-close"></i>
-            </button>
-          </li>
-          <li className="SearchHistory-item">
-            <button className="word-button" type="button">
-              튕김버그
-            </button>
-            <button
-              className="delete-button"
-              type="button"
-              aria-label="검색어 삭제"
-            >
-              <i className="ic-close"></i>
-            </button>
-          </li>
+          {props.searchHistoryitems.map((item, idx) => {
+            return (
+              <li className="SearchHistory-item" key={idx}>
+                <button className="word-button" type="button">
+                  {item}
+                </button>
+                <button
+                  className="delete-button"
+                  type="button"
+                  aria-label="검색어 삭제"
+                  onClick={() => {
+                    props.deleteSearchHistoryItem(idx)
+                  }}
+                >
+                  <i className="ic-close"></i>
+                </button>
+              </li>
+            )
+          })}
         </ol>
       </div>
     </section>

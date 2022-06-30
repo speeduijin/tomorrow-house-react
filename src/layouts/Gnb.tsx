@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from 'react'
 import Logo from '../assets/images/Logo.svg'
 import GnbNav from '../components/GnbNav'
 import GnbIconButton from '../components/GnbIconButton'
@@ -9,7 +10,55 @@ interface GnbProps {
   openSidebar: () => void
 }
 
+interface DeleteSearchHistoryItem {
+  (key: number): void
+}
+
 function Gnb(props: GnbProps) {
+  const searchHistoryitemsInit = ['김버그', '버그', '튕김버그']
+  const [searchHistoryitems, setSearchHistoryitems] = useState<string[]>(
+    searchHistoryitemsInit
+  )
+
+  const [isActiveSearchHistory, setIsActiveSearchHistory] = useState(false)
+
+  const gnbSearchRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const closeSearchHistoryOnClickingOutside = (event: MouseEvent) => {
+      gnbSearchRef.current &&
+        !gnbSearchRef.current.contains(event.target as Node) &&
+        setIsActiveSearchHistory(false)
+    }
+
+    document.addEventListener('mousedown', closeSearchHistoryOnClickingOutside)
+    return () => {
+      document.removeEventListener(
+        'mousedown',
+        closeSearchHistoryOnClickingOutside
+      )
+    }
+  }, [gnbSearchRef])
+
+  const openSearchHistory = () => {
+    searchHistoryitems.length !== 0 && setIsActiveSearchHistory(true)
+  }
+
+  const deleteAllSearchHistoryItems = () => {
+    const copySearchHistoryitems = [...searchHistoryitems]
+    copySearchHistoryitems.length = 0
+    setSearchHistoryitems(copySearchHistoryitems)
+
+    setIsActiveSearchHistory(false)
+  }
+
+  const deleteSearchHistoryItem: DeleteSearchHistoryItem = (key) => {
+    const copySearchHistoryitems = [...searchHistoryitems]
+    copySearchHistoryitems.splice(key, 1)
+    copySearchHistoryitems.length === 0 && setIsActiveSearchHistory(false)
+
+    setSearchHistoryitems(copySearchHistoryitems)
+  }
   return (
     <div className="Gnb">
       <div className="container">
@@ -34,17 +83,23 @@ function Gnb(props: GnbProps) {
               </div>
 
               <div className="Gnb-right">
-                <div className="Gnb-search lg-only">
+                <div className="Gnb-search lg-only" ref={gnbSearchRef}>
                   <div className="input-group">
                     <i className="ic-search" aria-hidden></i>
                     <input
                       className="form-input"
                       type="text"
                       placeholder="스토어 검색"
+                      onFocus={openSearchHistory}
                     />
                   </div>
 
-                  <SearchHistory />
+                  <SearchHistory
+                    searchHistoryitems={searchHistoryitems}
+                    isActiveSearchHistory={isActiveSearchHistory}
+                    deleteAllSearchHistoryItems={deleteAllSearchHistoryItems}
+                    deleteSearchHistoryItem={deleteSearchHistoryItem}
+                  />
                 </div>
 
                 {/* NOTE: 로그인을 한 경우   */}
