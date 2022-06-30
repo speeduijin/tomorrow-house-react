@@ -8,6 +8,10 @@ interface SidebarProps {
   isActiveSidebar: boolean
 }
 
+interface HandleToggle {
+  (id: number): void
+}
+
 function Sidebar(props: SidebarProps) {
   const drawMenuInfo = [
     {
@@ -63,7 +67,7 @@ function Sidebar(props: SidebarProps) {
 
   const [isOpen, setIsOpen] = useState(isOpenInitial)
 
-  const handleToggle = (id: number) => {
+  const handleToggle: HandleToggle = (id) => {
     const copyIsOpen = [...isOpen]
     if (copyIsOpen[id] !== true) {
       copyIsOpen.fill(false)
