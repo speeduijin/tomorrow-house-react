@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Logo from '../assets/images/Logo.svg'
 import imgUser01 from '../assets/images/img-user-01.jpg'
 import DrawerMenu from '../components/DrawerMenu'
@@ -8,6 +9,46 @@ interface SidebarProps {
 }
 
 function Sidebar(props: SidebarProps) {
+  const drawMenuInfo = [
+    {
+      className: 'is-community',
+      contents: [
+        '홈',
+        '사진',
+        '집들이',
+        '노하우',
+        '전문가집들이',
+        '셀프가이드',
+        '질문과 답변',
+        '이벤트',
+      ],
+      buttonIClassName: 'ic-community',
+      buttonContent: '커뮤니티',
+    },
+    {
+      className: 'is-store',
+      contents: [
+        '스토어홈',
+        '카테고리',
+        '신혼가구',
+        '베스트',
+        '오늘의딜',
+        '연휴특가',
+        '월동준비',
+        '리퍼마켓',
+        '기획전',
+      ],
+      buttonIClassName: 'ic-store',
+      buttonContent: '스토어',
+    },
+    {
+      className: 'is-expert',
+      contents: ['시공홈', '시공스토어'],
+      buttonIClassName: 'ic-expert',
+      buttonContent: '인테리어시공',
+    },
+  ]
+
   const userMenuItems = [
     '마이페이지',
     '나의 쇼핑',
@@ -16,6 +57,21 @@ function Sidebar(props: SidebarProps) {
     '이벤트',
   ]
 
+  const isOpenInitial: boolean[] = Array(drawMenuInfo.length).fill(false)
+  // 'is-stre' is-active 설정
+  isOpenInitial[1] = true
+
+  const [isOpen, setIsOpen] = useState(isOpenInitial)
+
+  const handleToggle = (id: number) => {
+    const copyIsOpen = [...isOpen]
+    if (copyIsOpen[id] !== true) {
+      copyIsOpen.fill(false)
+    }
+    copyIsOpen[id] = !copyIsOpen[id]
+
+    setIsOpen(copyIsOpen)
+  }
   return (
     <aside
       className={`Sidebar sm-only ${props.isActiveSidebar && 'is-active'}`}
@@ -50,44 +106,20 @@ function Sidebar(props: SidebarProps) {
 
       <nav className="Sidebar-nav">
         <h2 className="visually-hidden">메뉴</h2>
-        <DrawerMenu
-          className="is-community"
-          itemName={[
-            '홈',
-            '사진',
-            '집들이',
-            '노하우',
-            '전문가집들이',
-            '셀프가이드',
-            '질문과 답변',
-            '이벤트',
-          ]}
-          buttonIClassName="ic-community"
-          buttonContent="커뮤니티"
-        />
-
-        <DrawerMenu
-          className="is-store is-active is-open"
-          itemName={[
-            '스토어홈',
-            '카테고리',
-            '신혼가구',
-            '베스트',
-            '오늘의딜',
-            '연휴특가',
-            '월동준비',
-            '리퍼마켓',
-          ]}
-          buttonIClassName="ic-store"
-          buttonContent="스토어"
-        />
-
-        <DrawerMenu
-          className="is-expert"
-          itemName={['시공홈', '시공스토어']}
-          buttonIClassName="ic-expert"
-          buttonContent="인테리어시공"
-        />
+        {drawMenuInfo.map((item, idx) => {
+          return (
+            <DrawerMenu
+              className={item.className}
+              contents={item.contents}
+              buttonIClassName={item.buttonIClassName}
+              buttonContent={item.buttonContent}
+              isOpen={isOpen}
+              id={idx}
+              handleToggle={handleToggle}
+              key={idx}
+            />
+          )
+        })}
 
         {/* NOTE: 로그인을 한 경우 */}
         <div className="Sidebar-user-menu">

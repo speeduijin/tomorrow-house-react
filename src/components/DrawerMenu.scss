@@ -1,0 +1,79 @@
+@use "../styles/constants" as const;
+@use "../styles/mixins" as mixin;
+
+.DrawerMenu {
+  $drawer-menu-item-height: 36px;
+  $drawer-menu-list-padding: 20px;
+  $community-length: 8;
+  $store-length: 9;
+  $expert-length: 2;
+
+  @function _calculate-max-content-height($length) {
+    @return $drawer-menu-item-height * $length + $drawer-menu-list-padding;
+  }
+
+  &.is-active {
+    .DrawerMenuButton {
+      color: const.$blue;
+    }
+  }
+
+  &.is-open {
+    &.is-community {
+      .DrawerMenu-content {
+        max-height: _calculate-max-content-height($community-length);
+      }
+    }
+
+    &.is-store {
+      .DrawerMenu-content {
+        max-height: _calculate-max-content-height($store-length);
+      }
+    }
+
+    &.is-expert {
+      .DrawerMenu-content {
+        max-height: _calculate-max-content-height($expert-length);
+      }
+    }
+
+    .DrawerMenuButton .ic-chevron {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .DrawerMenu-content {
+      max-height: 152px;
+    }
+
+    .DrawerMenu-list {
+      padding-bottom: $drawer-menu-list-padding;
+    }
+  }
+
+  &-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 200ms ease-in-out;
+  }
+
+  &-item {
+    &.is-active {
+      a {
+        color: const.$blue;
+      }
+    }
+
+    a {
+      @include mixin.flexbox(start);
+      @include mixin.text-style(14, const.$primary);
+      width: 100%;
+      height: $drawer-menu-item-height;
+      padding: 0 12px;
+      font-weight: 700;
+    }
+
+    .ic-new {
+      font-size: 16px;
+    }
+  }
+}
