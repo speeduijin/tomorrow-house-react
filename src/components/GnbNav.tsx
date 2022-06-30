@@ -10,7 +10,7 @@ function GnbNav() {
         {items.map((item, idx) => {
           return (
             <li
-              className={`GnbNav-item ${item === '스토어' && 'is-active'}`}
+              className={`GnbNav-item${item === '스토어' ? ' is-active' : ''}`}
               key={idx}
             >
               <a href="/">{item}</a>
