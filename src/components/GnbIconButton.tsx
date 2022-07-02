@@ -1,4 +1,4 @@
-import './GnbIconButtons.scss'
+import './GnbIconButton.scss'
 
 interface GnbIconButtonProps {
   className: string
@@ -7,28 +7,29 @@ interface GnbIconButtonProps {
   openSidebar?: () => void
 }
 
-function GnbIconButton(props: GnbIconButtonProps) {
-  if (props.ariaLabel.includes('버튼')) {
+function GnbIconButton({
+  className,
+  ariaLabel,
+  iClassName,
+  openSidebar,
+}: GnbIconButtonProps) {
+  if (ariaLabel.includes('버튼')) {
     return (
       <button
-        className={`GnbIconButton ${props.className}`}
+        className={`GnbIconButton ${className}`}
         type="button"
-        aria-label={props.ariaLabel}
-        onClick={props.openSidebar}
+        aria-label={ariaLabel}
+        onClick={openSidebar}
       >
-        <i className={props.iClassName}></i>
+        <i className={iClassName}></i>
       </button>
     )
   }
   return (
-    <a
-      className={`GnbIconButton ${props.className}`}
-      href="/"
-      aria-label={props.ariaLabel}
-    >
-      <i className={props.iClassName}></i>
+    <a className={`GnbIconButton ${className}`} href="/" aria-label={ariaLabel}>
+      <i className={iClassName}></i>
 
-      {props.className === 'is-cart' && <strong className="badge">5</strong>}
+      {className === 'is-cart' && <strong className="badge">5</strong>}
     </a>
   )
 }
