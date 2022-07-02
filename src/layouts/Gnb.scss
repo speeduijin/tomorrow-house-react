@@ -11,7 +11,7 @@
     height: const.$gnb-height-sm - 1px;
   }
 
-  &-right {
+  &Right {
     .button-group {
       @include mixin.flexbox(end);
     }
@@ -21,18 +21,8 @@
     }
   }
 
-  .logo {
+  .Logo {
     @include mixin.pos-center;
-
-    a {
-      display: block;
-    }
-
-    img {
-      display: block;
-      width: auto;
-      height: 20px;
-    }
   }
 
   @include mixin.responsive(T) {
@@ -40,40 +30,40 @@
       height: const.$gnb-height-md - 1px;
     }
 
-    &-left {
+    &Left {
       @include mixin.flexbox(start);
     }
 
-    &-right {
+    &Right {
       @include mixin.flexbox(end);
 
       .button-group {
         margin-right: 24px;
-      }
 
-      .GnbIconButton {
-        margin-right: 8px;
-      }
+        .GnbIconButton {
+          margin-right: 8px;
+        }
 
-      .Gnb-auth {
-        margin-left: 8px;
+        .Gnb-auth {
+          margin-left: 8px;
 
-        a {
-          @include mixin.text-style(14, const.$secondary);
-          font-weight: 700;
+          a {
+            @include mixin.text-style(14, const.$secondary);
+            font-weight: 700;
 
-          &:first-child {
-            margin-right: 12px;
-          }
+            &:first-child {
+              margin-right: 12px;
+            }
 
-          &:hover {
-            color: const.$blue;
+            &:hover {
+              color: const.$blue;
+            }
           }
         }
       }
     }
 
-    .logo {
+    .Logo {
       position: static;
       padding-right: 32px;
       transform: none;
