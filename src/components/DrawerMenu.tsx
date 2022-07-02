@@ -1,43 +1,43 @@
-import DrawerMenuButton from './DrawerMenuButton'
 import './DrawerMenu.scss'
 
 interface DrawerMenuProps {
+  children: JSX.Element
   className: string
   contents: string[]
-  buttonIClassName: string
-  buttonContent: string
   isOpen: boolean[]
   id: number
-  handleToggle: (id: number) => void
 }
 
-function DrawerMenu(props: DrawerMenuProps) {
+function DrawerMenu({
+  children,
+  className,
+  contents,
+  isOpen,
+  id,
+}: DrawerMenuProps) {
   return (
-    // 'is-store' is-active 설정
+    /* NOTE: 'is-store' is-active 설정 */
     <div
-      className={`DrawerMenu ${props.className} ${
-        props.isOpen[props.id] ? 'is-open' : ''
-      } ${props.className === 'is-store' ? 'is-active' : ''}`}
+      className={`DrawerMenu ${className}${isOpen[id] ? ' is-open' : ''}${
+        className === 'is-store' ? ' is-active' : ''
+      }`}
     >
-      <DrawerMenuButton
-        iClassName={props.buttonIClassName}
-        content={props.buttonContent}
-        id={props.id}
-        handleToggle={props.handleToggle}
-      />
-
+      {children}
       <div className="DrawerMenu-content">
         <ul className="DrawerMenu-list">
-          {props.contents.map((item, idx) => {
+          {contents.map((item, idx) => {
             return (
+              /* NOTE: '기획전' is-active 설정 */
               <li
-                className={`DrawerMenu-item ${
-                  item === '기획전' && 'is-active'
+                className={`DrawerMenu-item${
+                  item === '기획전' ? ' is-active' : ''
                 }`}
                 key={idx}
               >
                 <a href="/">
                   {item}
+
+                  {/* NOTE: '기획전' is-active 설정 */}
                   {item === '기획전' && (
                     <i className="ic-new" lang="en" aria-label="New"></i>
                   )}

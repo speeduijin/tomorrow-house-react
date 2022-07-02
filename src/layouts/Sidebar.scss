@@ -24,20 +24,6 @@
 
   &-header {
     padding: 0 12px;
-
-    .logo {
-      @include mixin.flexbox(start);
-
-      a {
-        display: block;
-      }
-
-      img {
-        display: block;
-        width: auto;
-        height: 20px;
-      }
-    }
   }
 
   &-user,

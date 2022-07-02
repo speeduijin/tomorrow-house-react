@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import Logo from '../assets/images/Logo.svg'
 import imgUser01 from '../assets/images/img-user-01.jpg'
+import Logo from '../components/Logo'
 import DrawerMenu from '../components/DrawerMenu'
+import DrawerMenuButton from '../components/DrawerMenuButton'
 import './Sidebar.scss'
 
 interface SidebarProps {
@@ -12,7 +13,7 @@ interface HandleToggle {
   (id: number): void
 }
 
-function Sidebar(props: SidebarProps) {
+function Sidebar({ isActiveSidebar }: SidebarProps) {
   const drawMenuInfo = [
     {
       className: 'is-community',
@@ -61,31 +62,24 @@ function Sidebar(props: SidebarProps) {
     '이벤트',
   ]
 
-  const isOpenInitial: boolean[] = Array(drawMenuInfo.length).fill(false)
-  // 'is-store' is-active 설정
-  isOpenInitial[1] = true
+  const isOpenInit: boolean[] = Array(drawMenuInfo.length).fill(false)
 
-  const [isOpen, setIsOpen] = useState(isOpenInitial)
+  /* NOTE: 'is-store' is-active 설정 */
+  isOpenInit[1] = true
+
+  const [isOpen, setIsOpen] = useState(isOpenInit)
 
   const handleToggle: HandleToggle = (id) => {
     const copyIsOpen = [...isOpen]
-    if (copyIsOpen[id] !== true) {
-      copyIsOpen.fill(false)
-    }
+    copyIsOpen[id] !== true && copyIsOpen.fill(false)
     copyIsOpen[id] = !copyIsOpen[id]
 
     setIsOpen(copyIsOpen)
   }
   return (
-    <aside
-      className={`Sidebar sm-only ${props.isActiveSidebar && 'is-active'}`}
-    >
+    <aside className={`Sidebar sm-only${isActiveSidebar && ' is-active'}`}>
       <header className="Sidebar-header">
-        <h1 className="logo">
-          <a href="/">
-            <img src={Logo} alt="내일의 집" />
-          </a>
-        </h1>
+        <Logo />
 
         {/* NOTE: 로그인을 한 경우 */}
         <div className="Sidebar-user">
@@ -115,13 +109,17 @@ function Sidebar(props: SidebarProps) {
             <DrawerMenu
               className={item.className}
               contents={item.contents}
-              buttonIClassName={item.buttonIClassName}
-              buttonContent={item.buttonContent}
               isOpen={isOpen}
               id={idx}
-              handleToggle={handleToggle}
               key={idx}
-            />
+            >
+              <DrawerMenuButton
+                buttonIClassName={item.buttonIClassName}
+                buttonContent={item.buttonContent}
+                id={idx}
+                handleToggle={handleToggle}
+              />
+            </DrawerMenu>
           )
         })}
 

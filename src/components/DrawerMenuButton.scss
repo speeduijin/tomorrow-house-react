@@ -1,7 +1,7 @@
 @use "../styles/constants" as const;
 @use "../styles/mixins" as mixin;
 
-.DrawerMenuButton {
+.DrawerMenu .DrawerMenuButton {
   @include mixin.flexbox(start);
   @include mixin.text-style(18, const.$primary);
   position: relative;
