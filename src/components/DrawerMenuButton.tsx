@@ -1,5 +1,3 @@
-import './DrawerMenuButton.scss'
-
 interface DrawerMenuButtonProps {
   buttonIClassName: string
   buttonContent: string

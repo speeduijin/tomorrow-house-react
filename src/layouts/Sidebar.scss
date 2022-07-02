@@ -12,7 +12,7 @@
   width: $sidebar-width;
   height: 100vh;
   padding: 32px 20px;
-  overflow: auto;
+  overflow-y: auto;
   overscroll-behavior: contain;
   background-color: const.$white;
   transition: transform 300ms ease-in-out;
@@ -24,6 +24,10 @@
 
   &-header {
     padding: 0 12px;
+
+    .Logo {
+      @include mixin.flexbox(start);
+    }
   }
 
   &-user,
@@ -43,6 +47,7 @@
 
     .avatar-24 {
       flex-grow: 0;
+      flex-shrink: 0;
       margin-right: 8px;
     }
 
@@ -61,7 +66,7 @@
   }
 
   &-nav {
-    .DrawerMenu {
+    .drawer-menu {
       border-top: 1px solid const.$border;
 
       &.is-expert {
