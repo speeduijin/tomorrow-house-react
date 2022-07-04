@@ -11,10 +11,10 @@ function Overlay({
   isActiveSearchModal,
   onClick,
 }: OverlayProps) {
-  const isActive = isActiveSidebar || isActiveSearchModal ? ' is-active' : ''
+  const isActive = isActiveSidebar || isActiveSearchModal ? 'is-active' : ''
 
   return (
-    <div className={`Overlay${isActive}`} aria-hidden onClick={onClick}></div>
+    <div className={`Overlay ${isActive}`} aria-hidden onClick={onClick}></div>
   )
 }
 

@@ -4,7 +4,7 @@ interface DrawerMenuProps {
   children: JSX.Element
   className: string
   contents: string[]
-  isOpen: boolean[]
+  isOpenDrawerMenu: boolean[]
   id: number
 }
 
@@ -12,35 +12,30 @@ function DrawerMenu({
   children,
   className,
   contents,
-  isOpen,
+  isOpenDrawerMenu,
   id,
 }: DrawerMenuProps) {
+  const isOpen = isOpenDrawerMenu[id] ? 'is-open' : ''
+
+  /* NOTE: 'is-store' is-active 설정 */
+  const isStoreActive = className === 'is-store' ? 'is-active' : ''
   return (
-    /* NOTE: 'is-store' is-active 설정 */
-    <div
-      className={`DrawerMenu ${className}${isOpen[id] ? ' is-open' : ''}${
-        className === 'is-store' ? ' is-active' : ''
-      }`}
-    >
+    <div className={`DrawerMenu ${className} ${isOpen} ${isStoreActive}`}>
       {children}
       <div className="DrawerMenu-content">
         <ul className="DrawerMenu-list">
           {contents.map((item, idx) => {
+            /* NOTE: '기획전' is-active 설정 */
+            const isActive = item === '기획전' ? 'is-active' : ''
+            /* NOTE: '기획전' New Icon 적용 */
+            const isNew = item === '기획전' && (
+              <i className="ic-new" lang="en" aria-label="New"></i>
+            )
             return (
-              /* NOTE: '기획전' is-active 설정 */
-              <li
-                className={`DrawerMenu-item${
-                  item === '기획전' ? ' is-active' : ''
-                }`}
-                key={idx}
-              >
+              <li className={`DrawerMenu-item ${isActive}`} key={idx}>
                 <a href="/">
                   {item}
-
-                  {/* NOTE: '기획전' is-active 설정 */}
-                  {item === '기획전' && (
-                    <i className="ic-new" lang="en" aria-label="New"></i>
-                  )}
+                  {isNew}
                 </a>
               </li>
             )

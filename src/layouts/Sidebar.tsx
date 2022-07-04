@@ -55,7 +55,7 @@ function Sidebar({ isActiveSidebar }: SidebarProps) {
   ]
   const userMenuInfo = ['마이페이지', '나의 쇼핑', '스크랩북', '알림', '이벤트']
 
-  const isActive = isActiveSidebar && ' is-active'
+  const isActive = isActiveSidebar ? 'is-active' : ''
 
   const isOpenDrawerMenuInit: boolean[] = Array(drawMenuInfo.length).fill(false)
   /* NOTE: 'is-store' is-active 설정 */
@@ -69,7 +69,7 @@ function Sidebar({ isActiveSidebar }: SidebarProps) {
     setIsOpenDrawerMenu(copyIsOpenDrawerMenu)
   }
   return (
-    <aside className={`Sidebar sm-only${isActive}`}>
+    <aside className={`Sidebar sm-only ${isActive}`}>
       <header className="Sidebar-header">
         <Logo />
 
