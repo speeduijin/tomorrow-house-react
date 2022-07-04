@@ -2,21 +2,21 @@ interface DrawerMenuButtonProps {
   buttonIClassName: string
   buttonContent: string
   id: number
-  handleToggle: (id: number) => void
+  handleToggleDrawerMenu: (id: number) => void
 }
 
 function DrawerMenuButton({
   buttonIClassName,
   buttonContent,
   id,
-  handleToggle,
+  handleToggleDrawerMenu,
 }: DrawerMenuButtonProps) {
   return (
     <button
       className="DrawerMenuButton"
       type="button"
       onClick={() => {
-        handleToggle(id)
+        handleToggleDrawerMenu(id)
       }}
     >
       <i className={buttonIClassName} aria-hidden></i>

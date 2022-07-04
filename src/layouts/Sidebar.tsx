@@ -9,7 +9,7 @@ interface SidebarProps {
   isActiveSidebar: boolean
 }
 
-interface HandleToggle {
+interface HandleToggleDrawerMenu {
   (id: number): void
 }
 
@@ -53,31 +53,23 @@ function Sidebar({ isActiveSidebar }: SidebarProps) {
       buttonContent: '인테리어시공',
     },
   ]
+  const userMenuInfo = ['마이페이지', '나의 쇼핑', '스크랩북', '알림', '이벤트']
 
-  const userMenuItems = [
-    '마이페이지',
-    '나의 쇼핑',
-    '스크랩북',
-    '알림',
-    '이벤트',
-  ]
+  const isActive = isActiveSidebar && ' is-active'
 
-  const isOpenInit: boolean[] = Array(drawMenuInfo.length).fill(false)
-
+  const isOpenDrawerMenuInit: boolean[] = Array(drawMenuInfo.length).fill(false)
   /* NOTE: 'is-store' is-active 설정 */
-  isOpenInit[1] = true
+  isOpenDrawerMenuInit[1] = true
+  const [isOpenDrawerMenu, setIsOpenDrawerMenu] = useState(isOpenDrawerMenuInit)
 
-  const [isOpen, setIsOpen] = useState(isOpenInit)
-
-  const handleToggle: HandleToggle = (id) => {
-    const copyIsOpen = [...isOpen]
-    copyIsOpen[id] !== true && copyIsOpen.fill(false)
-    copyIsOpen[id] = !copyIsOpen[id]
-
-    setIsOpen(copyIsOpen)
+  const handleToggleDrawerMenu: HandleToggleDrawerMenu = (id) => {
+    const copyIsOpenDrawerMenu = [...isOpenDrawerMenu]
+    copyIsOpenDrawerMenu[id] !== true && copyIsOpenDrawerMenu.fill(false)
+    copyIsOpenDrawerMenu[id] = !copyIsOpenDrawerMenu[id]
+    setIsOpenDrawerMenu(copyIsOpenDrawerMenu)
   }
   return (
-    <aside className={`Sidebar sm-only${isActiveSidebar && ' is-active'}`}>
+    <aside className={`Sidebar sm-only${isActive}`}>
       <header className="Sidebar-header">
         <Logo />
 
@@ -109,7 +101,7 @@ function Sidebar({ isActiveSidebar }: SidebarProps) {
             <DrawerMenu
               className={item.className}
               contents={item.contents}
-              isOpen={isOpen}
+              isOpenDrawerMenu={isOpenDrawerMenu}
               id={idx}
               key={idx}
             >
@@ -117,7 +109,7 @@ function Sidebar({ isActiveSidebar }: SidebarProps) {
                 buttonIClassName={item.buttonIClassName}
                 buttonContent={item.buttonContent}
                 id={idx}
-                handleToggle={handleToggle}
+                handleToggleDrawerMenu={handleToggleDrawerMenu}
               />
             </DrawerMenu>
           )
@@ -126,7 +118,7 @@ function Sidebar({ isActiveSidebar }: SidebarProps) {
         {/* NOTE: 로그인을 한 경우 */}
         <div className="Sidebar-user-menu">
           <ul className="user-menu-list">
-            {userMenuItems.map((item, idx) => (
+            {userMenuInfo.map((item, idx) => (
               <li className="user-menu-item" key={idx}>
                 <a href="/">{item}</a>
               </li>

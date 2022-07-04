@@ -2,16 +2,19 @@ import './Overlay.scss'
 
 interface OverlayProps {
   isActiveSidebar: boolean
-  closeSidebar: () => void
+  isActiveSearchModal: boolean
+  onClick: () => void
 }
 
-function Overlay({ isActiveSidebar, closeSidebar }: OverlayProps) {
+function Overlay({
+  isActiveSidebar,
+  isActiveSearchModal,
+  onClick,
+}: OverlayProps) {
+  const isActive = isActiveSidebar || isActiveSearchModal ? ' is-active' : ''
+
   return (
-    <div
-      className={`Overlay${isActiveSidebar ? ' is-active' : ''}`}
-      aria-hidden
-      onClick={closeSidebar}
-    ></div>
+    <div className={`Overlay${isActive}`} aria-hidden onClick={onClick}></div>
   )
 }
 
