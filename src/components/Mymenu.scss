@@ -1,18 +1,18 @@
 @use "../styles/constants" as const;
 @use "../styles/mixins" as mixin;
 
-.Mymenu {
+.MyMenu {
   $button-size: 32px;
   $tooltip-size: 12px;
 
   position: relative;
 
   &.is-active {
-    .Mymenu-button {
+    .MyMenu-button {
       border-color: const.$blue;
     }
 
-    .Mymenu-content {
+    .MyMenu-content {
       visibility: visible;
       opacity: 1;
       transform: translate3d(-50%, 0, 0);
