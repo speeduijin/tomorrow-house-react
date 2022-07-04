@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import InputGroup from './InputGroup'
 import SearchHistory from '../components/SearchHistory'
 import GnbIconButton from './GnbIconButton'
-import Mymenu from '../components/Mymenu'
+import Mymenu from './MyMenu'
 
 interface GnbRightProps {
   searchHistoryitems: string[]
@@ -69,6 +69,23 @@ function GnbRight({
     setIsActiveSearchHistory(true)
   }
 
+  const buttonItems = gnbIconButtonItems.map((item, idx) => {
+    const gnbIconButtonType = item.type === 'button' ? item.type : undefined
+    const gnbIconButtonOnClick =
+      item.iClassName === 'ic-search' ? openSearchModal : undefined
+
+    return (
+      <GnbIconButton
+        className={item.className}
+        ariaLabel={item.ariaLabel}
+        iClassName={item.iClassName}
+        type={gnbIconButtonType}
+        onClick={gnbIconButtonOnClick}
+        key={idx}
+      />
+    )
+  })
+
   return (
     <div className="GnbRight">
       <div className="Gnb-search lg-only" ref={gnbSearchRef}>
@@ -86,23 +103,7 @@ function GnbRight({
 
       {/* NOTE: 로그인을 한 경우   */}
       <div className="button-group">
-        {gnbIconButtonItems.map((item, idx) => {
-          const gnbIconButtonType =
-            item.type === 'button' ? item.type : undefined
-          const gnbIconButtonOnClick =
-            item.iClassName === 'ic-search' ? openSearchModal : undefined
-
-          return (
-            <GnbIconButton
-              className={item.className}
-              ariaLabel={item.ariaLabel}
-              iClassName={item.iClassName}
-              type={gnbIconButtonType}
-              onClick={gnbIconButtonOnClick}
-              key={idx}
-            />
-          )
-        })}
+        {buttonItems}
 
         <Mymenu />
       </div>

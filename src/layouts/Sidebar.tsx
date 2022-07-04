@@ -118,11 +118,13 @@ function Sidebar({ isActiveSidebar }: SidebarProps) {
         {/* NOTE: 로그인을 한 경우 */}
         <div className="Sidebar-user-menu">
           <ul className="user-menu-list">
-            {userMenuInfo.map((item, idx) => (
-              <li className="user-menu-item" key={idx}>
-                <a href="/">{item}</a>
-              </li>
-            ))}
+            {userMenuInfo.map((item, idx) => {
+              return (
+                <li className="user-menu-item" key={idx}>
+                  <a href="/">{item}</a>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </nav>
