@@ -4,34 +4,49 @@ interface GnbIconButtonProps {
   className: string
   ariaLabel: string
   iClassName: string
-  openSidebar?: () => void
+  type?: 'button'
+  onClick?: () => void
 }
 
 function GnbIconButton({
   className,
   ariaLabel,
   iClassName,
-  openSidebar,
+  type,
+  onClick,
 }: GnbIconButtonProps) {
-  if (ariaLabel.includes('버튼')) {
+  function Button() {
     return (
       <button
         className={`GnbIconButton ${className}`}
-        type="button"
+        type={type}
         aria-label={ariaLabel}
-        onClick={openSidebar}
+        onClick={onClick}
       >
         <i className={iClassName}></i>
       </button>
     )
   }
-  return (
-    <a className={`GnbIconButton ${className}`} href="/" aria-label={ariaLabel}>
-      <i className={iClassName}></i>
 
-      {className === 'is-cart' && <strong className="badge">5</strong>}
-    </a>
-  )
+  function Anchor() {
+    const isCount = className === 'is-cart' && (
+      <strong className="badge">5</strong>
+    )
+    return (
+      <a
+        className={`GnbIconButton ${className}`}
+        href="/"
+        aria-label={ariaLabel}
+      >
+        <i className={iClassName}></i>
+
+        {isCount}
+      </a>
+    )
+  }
+
+  const GnbIconButtonType = type === 'button' ? <Button /> : <Anchor />
+  return <>{GnbIconButtonType}</>
 }
 
 export default GnbIconButton
