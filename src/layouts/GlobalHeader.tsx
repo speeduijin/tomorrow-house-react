@@ -1,7 +1,7 @@
 import './GlobalHeader.scss'
 
 interface GlobalHeaderProps {
-  children: JSX.Element
+  children: JSX.Element[]
 }
 
 function GlobalHeader({ children }: GlobalHeaderProps) {

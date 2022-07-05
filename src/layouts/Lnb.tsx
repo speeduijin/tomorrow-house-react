@@ -1,6 +1,26 @@
+import LocalNav from '../components/LocalNav'
 import './Lnb.scss'
 
-function Lnb() {
+interface LnbProps {
+  navInfo: {
+    localNavItems: string[]
+  }[]
+  isActiveGnbNav: boolean[]
+}
+
+function Lnb({ navInfo, isActiveGnbNav }: LnbProps) {
+  const gnbNavActive = navInfo.map((item, idx) => {
+    return (
+      isActiveGnbNav[idx] && (
+        <LocalNav
+          classNameTitle={'Lnb'}
+          localNavItems={item.localNavItems}
+          key={idx}
+        />
+      )
+    )
+  })
+
   return (
     <nav className="Lnb">
       <div className="container">
@@ -8,38 +28,7 @@ function Lnb() {
           <div className="col-sm-4">
             <h1 className="visually-hidden">스토어 메뉴</h1>
 
-            <ul className="Lnb-list">
-              <li className="Lnb-item is-active">
-                <a href="/">스토어</a>
-              </li>
-              <li className="Lnb-item">
-                <a href="/">카테고리</a>
-              </li>
-              <li className="Lnb-item">
-                <a href="/">신혼가구</a>
-              </li>
-              <li className="Lnb-item">
-                <a href="/">베스트</a>
-              </li>
-              <li className="Lnb-item">
-                <a href="/">오늘의딜</a>
-              </li>
-              <li className="Lnb-item">
-                <a href="/">연휴특가</a>
-              </li>
-              <li className="Lnb-item">
-                <a href="/">월동준비</a>
-              </li>
-              <li className="Lnb-item">
-                <a href="/">리퍼마켓</a>
-              </li>
-              <li className="Lnb-item">
-                <a href="/">
-                  기획전
-                  <i className="ic-new" lang="en" aria-label="New"></i>
-                </a>
-              </li>
-            </ul>
+            {gnbNavActive}
           </div>
         </div>
       </div>
