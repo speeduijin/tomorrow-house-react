@@ -7,8 +7,8 @@ function LocalNav({ classNameTitle, localNavItems }: LocalNavProps) {
   return (
     <ul className={`${classNameTitle}-list`}>
       {localNavItems.map((item, idx) => {
-        /* NOTE: '스토어' is-active 설정 */
-        const isActive = item === '스토어' ? 'is-active' : ''
+        /* NOTE: '카테고리' is-active 설정 */
+        const isActive = item === '카테고리' ? 'is-active' : ''
         /* NOTE: '기획전' New Icon 적용 */
         const isNew = item === '기획전' && (
           <i className="ic-new" lang="en" aria-label="New"></i>

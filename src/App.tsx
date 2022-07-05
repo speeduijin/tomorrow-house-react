@@ -105,7 +105,11 @@ function App() {
 
         <Lnb navInfo={navInfo} isActiveGnbNav={isActiveGnbNav} />
       </GlobalHeader>
-      <Sidebar isActiveSidebar={isActiveSidebar} />
+      <Sidebar
+        navInfo={navInfo}
+        isActiveSidebar={isActiveSidebar}
+        isActiveGnbNav={isActiveGnbNav}
+      />
       <SearchModal
         isActiveSearchModal={isActiveSearchModal}
         setIsActiveSearchModal={setIsActiveSearchModal}

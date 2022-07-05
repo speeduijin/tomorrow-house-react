@@ -6,58 +6,26 @@ import DrawerMenuButton from '../components/DrawerMenuButton'
 import './Sidebar.scss'
 
 interface SidebarProps {
+  navInfo: {
+    globalNavItem: string
+    globalNavIClassName: string
+    drawerMenuClassName: string
+    localNavItems: string[]
+  }[]
   isActiveSidebar: boolean
+  isActiveGnbNav: boolean[]
 }
 
 interface HandleToggleDrawerMenu {
   (id: number): void
 }
 
-function Sidebar({ isActiveSidebar }: SidebarProps) {
-  const drawMenuInfo = [
-    {
-      className: 'is-community',
-      contents: [
-        '홈',
-        '사진',
-        '집들이',
-        '노하우',
-        '전문가집들이',
-        '셀프가이드',
-        '질문과 답변',
-        '이벤트',
-      ],
-      buttonIClassName: 'ic-community',
-      buttonContent: '커뮤니티',
-    },
-    {
-      className: 'is-store',
-      contents: [
-        '스토어홈',
-        '카테고리',
-        '신혼가구',
-        '베스트',
-        '오늘의딜',
-        '연휴특가',
-        '월동준비',
-        '리퍼마켓',
-        '기획전',
-      ],
-      buttonIClassName: 'ic-store',
-      buttonContent: '스토어',
-    },
-    {
-      className: 'is-expert',
-      contents: ['시공홈', '시공스토어'],
-      buttonIClassName: 'ic-expert',
-      buttonContent: '인테리어시공',
-    },
-  ]
+function Sidebar({ isActiveSidebar, navInfo, isActiveGnbNav }: SidebarProps) {
   const userMenuInfo = ['마이페이지', '나의 쇼핑', '스크랩북', '알림', '이벤트']
 
   const isActive = isActiveSidebar ? 'is-active' : ''
 
-  const isOpenDrawerMenuInit: boolean[] = Array(drawMenuInfo.length).fill(false)
+  const isOpenDrawerMenuInit: boolean[] = Array(navInfo.length).fill(false)
   /* NOTE: 'is-store' is-active 설정 */
   isOpenDrawerMenuInit[1] = true
   const [isOpenDrawerMenu, setIsOpenDrawerMenu] = useState(isOpenDrawerMenuInit)
@@ -96,18 +64,19 @@ function Sidebar({ isActiveSidebar }: SidebarProps) {
 
       <nav className="Sidebar-nav">
         <h2 className="visually-hidden">메뉴</h2>
-        {drawMenuInfo.map((item, idx) => {
+        {navInfo.map((item, idx) => {
           return (
             <DrawerMenu
-              className={item.className}
-              contents={item.contents}
+              className={item.drawerMenuClassName}
+              localNavItems={item.localNavItems}
               isOpenDrawerMenu={isOpenDrawerMenu}
+              isActiveGnbNav={isActiveGnbNav}
               id={idx}
               key={idx}
             >
               <DrawerMenuButton
-                buttonIClassName={item.buttonIClassName}
-                buttonContent={item.buttonContent}
+                buttonIClassName={item.globalNavIClassName}
+                buttonContent={item.globalNavItem}
                 id={idx}
                 handleToggleDrawerMenu={handleToggleDrawerMenu}
               />
