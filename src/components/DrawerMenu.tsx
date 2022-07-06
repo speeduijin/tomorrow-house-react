@@ -2,31 +2,62 @@ import LocalNav from './LocalNav'
 import './DrawerMenu.scss'
 
 interface DrawerMenuProps {
-  children: JSX.Element
-  className: string
-  localNavItems: string[]
-  isOpenDrawerMenu: boolean[]
+  info: {
+    id: number
+    globalNavItem: string
+    globalNavIClassName: string
+    localNavItems: string[]
+    drawerMenuClassName: string
+  }
   isActiveGnbNav: boolean[]
-  id: number
+  isOpenDrawerMenu: boolean[]
+  setIsOpenDrawerMenu: React.Dispatch<React.SetStateAction<boolean[]>>
+}
+
+interface HandleToggleDrawerMenu {
+  (id: number): void
 }
 
 function DrawerMenu({
-  children,
-  className,
-  localNavItems,
-  isOpenDrawerMenu,
+  info,
   isActiveGnbNav,
-  id,
+  isOpenDrawerMenu,
+  setIsOpenDrawerMenu,
 }: DrawerMenuProps) {
-  const isOpen = isOpenDrawerMenu[id] ? 'is-open' : ''
+  const handleToggleDrawerMenu: HandleToggleDrawerMenu = (id) => {
+    const copyIsOpenDrawerMenu = [...isOpenDrawerMenu]
+    !isOpenDrawerMenu[id] && copyIsOpenDrawerMenu.fill(false)
 
-  /* NOTE: 'is-store' is-active 설정 */
-  const isActiveGlobalNav = isActiveGnbNav[id] ? 'is-active' : ''
+    copyIsOpenDrawerMenu[id] = !copyIsOpenDrawerMenu[id]
+
+    setIsOpenDrawerMenu(copyIsOpenDrawerMenu)
+  }
+
+  const isActiveGlobalNav = isActiveGnbNav[info.id] ? 'is-active' : ''
+
+  const isOpen = isOpenDrawerMenu[info.id] ? 'is-open' : ''
+
   return (
-    <div className={`DrawerMenu ${className} ${isOpen} ${isActiveGlobalNav}`}>
-      {children}
+    <div
+      className={`DrawerMenu ${info.drawerMenuClassName} ${isOpen} ${isActiveGlobalNav}`}
+    >
+      <button
+        className="DrawerMenuButton"
+        type="button"
+        onClick={() => {
+          handleToggleDrawerMenu(info.id)
+        }}
+      >
+        <i className={info.globalNavIClassName} aria-hidden></i>
+        {info.globalNavItem}
+        <i className="ic-chevron" aria-hidden></i>
+      </button>
+
       <div className="DrawerMenu-content">
-        <LocalNav classNameTitle={'DrawerMenu'} localNavItems={localNavItems} />
+        <LocalNav
+          classNameTitle={'DrawerMenu'}
+          localNavItems={info.localNavItems}
+        />
       </div>
     </div>
   )
