@@ -3,7 +3,7 @@ import { useState } from 'react'
 interface Props {
   searchHistoryitems: string[]
   setSearchHistoryitems: React.Dispatch<React.SetStateAction<string[]>>
-  onFocus?: () => void
+  openSearchHistory?: () => void
 }
 
 interface ChangeSearchTextFunc {
@@ -16,7 +16,7 @@ interface AddSearchHistoryitemFunc {
 function InputGroup({
   searchHistoryitems,
   setSearchHistoryitems,
-  onFocus,
+  openSearchHistory,
 }: Props) {
   const [searchText, setSearchText] = useState('')
 
@@ -25,6 +25,9 @@ function InputGroup({
   }
 
   const addSearchHistoryitem: AddSearchHistoryitemFunc = (item) => {
+    searchHistoryitems.length === 5 &&
+      setSearchHistoryitems([...searchHistoryitems.splice(4, 1)])
+
     setSearchHistoryitems([item, ...searchHistoryitems])
   }
 
@@ -43,7 +46,7 @@ function InputGroup({
         className="form-input"
         type="text"
         placeholder="스토어 검색"
-        onFocus={onFocus}
+        onFocus={openSearchHistory}
         onChange={ChangeSearchText}
         value={searchText}
         onKeyPress={pressEnter}

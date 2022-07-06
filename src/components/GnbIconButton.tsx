@@ -11,11 +11,11 @@ interface GnbIconButtonProps {
 function GnbIconButton({
   className,
   ariaLabel,
+  onClick,
   iClassName,
   type,
-  onClick,
 }: GnbIconButtonProps) {
-  function Button() {
+  const Button = () => {
     return (
       <button
         className={`GnbIconButton ${className}`}
@@ -28,10 +28,11 @@ function GnbIconButton({
     )
   }
 
-  function Anchor() {
-    const isCount = className === 'is-cart' && (
+  const Anchor = () => {
+    const cartNumberBadge = className === 'is-cart' && (
       <strong className="badge">5</strong>
     )
+
     return (
       <a
         className={`GnbIconButton ${className}`}
@@ -39,8 +40,7 @@ function GnbIconButton({
         aria-label={ariaLabel}
       >
         <i className={iClassName}></i>
-
-        {isCount}
+        {cartNumberBadge}
       </a>
     )
   }

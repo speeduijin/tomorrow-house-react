@@ -1,52 +1,22 @@
 import { useState, useEffect, useRef } from 'react'
-import InputGroup from './InputGroup'
+import InputGroup from '../components/InputGroup'
 import SearchHistory from '../components/SearchHistory'
-import GnbIconButton from './GnbIconButton'
-import Mymenu from './MyMenu'
+import GnbIconButton from '../components/GnbIconButton'
+import Mymenu from '../components/MyMenu'
 
 interface GnbRightProps {
   searchHistoryitems: string[]
   setSearchHistoryitems: React.Dispatch<React.SetStateAction<string[]>>
-  openSearchModal?: () => void
-}
-
-interface gnbIconButtonItems {
-  className: string
-  ariaLabel: string
-  iClassName: string
-  type?: 'button'
+  setIsActiveSearchModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 function GnbRight({
   searchHistoryitems,
   setSearchHistoryitems,
-  openSearchModal,
+  setIsActiveSearchModal,
 }: GnbRightProps) {
-  const gnbIconButtonItems: gnbIconButtonItems[] = [
-    {
-      className: 'is-search lg-hidden',
-      ariaLabel: '검색창 열기 버튼',
-      iClassName: 'ic-search',
-      type: 'button',
-    },
-    {
-      className: 'sm-hidden',
-      ariaLabel: '스크랩북 페이지로 이동',
-      iClassName: 'ic-bookmark',
-    },
-    {
-      className: 'sm-hidden',
-      ariaLabel: '내 소식 페이지로 이동',
-      iClassName: 'ic-bell',
-    },
-    {
-      className: 'is-cart',
-      ariaLabel: '장바구니 페이지로 이동',
-      iClassName: 'ic-cart',
-    },
-  ]
-
   const [isActiveSearchHistory, setIsActiveSearchHistory] = useState(false)
+
   const gnbSearchRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -65,45 +35,57 @@ function GnbRight({
     }
   }, [gnbSearchRef])
 
+  const openSearchModal = () => {
+    setIsActiveSearchModal(true)
+  }
+
   const openSearchHistory = () => {
     setIsActiveSearchHistory(true)
   }
 
-  const buttonItems = gnbIconButtonItems.map((item, idx) => {
-    const gnbIconButtonType = item.type === 'button' ? item.type : undefined
-    const gnbIconButtonOnClick =
-      item.iClassName === 'ic-search' ? openSearchModal : undefined
-
-    return (
-      <GnbIconButton
-        className={item.className}
-        ariaLabel={item.ariaLabel}
-        iClassName={item.iClassName}
-        type={gnbIconButtonType}
-        onClick={gnbIconButtonOnClick}
-        key={idx}
-      />
-    )
-  })
+  isActiveSearchHistory &&
+    searchHistoryitems.length === 0 &&
+    setIsActiveSearchHistory(false)
 
   return (
     <div className="GnbRight">
       <div className="Gnb-search lg-only" ref={gnbSearchRef}>
         <InputGroup
-          onFocus={openSearchHistory}
+          openSearchHistory={openSearchHistory}
           searchHistoryitems={searchHistoryitems}
           setSearchHistoryitems={setSearchHistoryitems}
         />
         <SearchHistory
-          isActiveSearchHistory={isActiveSearchHistory}
           searchHistoryitems={searchHistoryitems}
           setSearchHistoryitems={setSearchHistoryitems}
+          isActiveSearchHistory={isActiveSearchHistory}
         />
       </div>
 
       {/* NOTE: 로그인을 한 경우   */}
       <div className="button-group">
-        {buttonItems}
+        <GnbIconButton
+          className="is-search lg-hidden"
+          ariaLabel="검색창 열기 버튼"
+          iClassName="ic-search"
+          type="button"
+          onClick={openSearchModal}
+        />
+        <GnbIconButton
+          className="sm-hidden"
+          ariaLabel="스크랩북 페이지로 이동"
+          iClassName="ic-bookmark"
+        />
+        <GnbIconButton
+          className="sm-hidden"
+          ariaLabel="내 소식 페이지로 이동"
+          iClassName="ic-bell"
+        />
+        <GnbIconButton
+          className="is-cart"
+          ariaLabel="장바구니 페이지로 이동"
+          iClassName="ic-cart"
+        />
 
         <Mymenu />
       </div>

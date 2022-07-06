@@ -1,22 +1,19 @@
 import { useState } from 'react'
 import GlobalHeader from './layouts/GlobalHeader'
 import Gnb from './layouts/Gnb'
+import GnbLeft from './layouts/GnbLeft'
+import GnbRight from './layouts/GnbRight'
 import Lnb from './layouts/Lnb'
 import Sidebar from './layouts/Sidebar'
 import SearchModal from './layouts/SearchModal'
 import Overlay from './layouts/Overlay'
 
-import GnbLeft from './components/GnbLeft'
-import GnbNav from './components/GnbNav'
-import GnbIconButton from './components/GnbIconButton'
-import GnbRight from './components/GnbRight'
-
 function App() {
   const navInfo = [
     {
+      id: 0,
       globalNavItem: '커뮤니티',
       globalNavIClassName: 'ic-community',
-      drawerMenuClassName: 'is-community',
       localNavItems: [
         '홈',
         '사진',
@@ -27,11 +24,12 @@ function App() {
         '질문과 답변',
         '이벤트',
       ],
+      drawerMenuClassName: 'is-community',
     },
     {
+      id: 1,
       globalNavItem: '스토어',
       globalNavIClassName: 'ic-store',
-      drawerMenuClassName: 'is-store',
       localNavItems: [
         '스토어',
         '카테고리',
@@ -43,19 +41,21 @@ function App() {
         '리퍼마켓',
         '기획전',
       ],
+      drawerMenuClassName: 'is-store',
     },
     {
+      id: 2,
       globalNavIClassName: 'ic-expert',
       globalNavItem: '인테리어시공',
-      drawerMenuClassName: 'is-expert',
       localNavItems: ['시공홈', '시공스토어'],
+      drawerMenuClassName: 'is-expert',
     },
   ]
 
   const isActiveGnbNavInit: boolean[] = Array(navInfo.length).fill(false)
   /* NOTE: '스토어' is-active 설정 */
   isActiveGnbNavInit[1] = true
-  const [isActiveGnbNav, setIsActiveGnbNav] = useState(isActiveGnbNavInit)
+  const [isActiveGnbNav, setIsActiveGnbNav] = useState([...isActiveGnbNavInit])
 
   const [isActiveSidebar, setIsActiveSidebar] = useState(false)
 
@@ -67,39 +67,20 @@ function App() {
     '튕김버그',
   ])
 
-  const closeSidebar = () => {
-    setIsActiveSidebar(false)
-  }
-  const openSidebar = () => {
-    setIsActiveSidebar(true)
-  }
-
-  const openSearchModal = () => {
-    setIsActiveSearchModal(true)
-  }
-
   return (
     <div className="App">
       <GlobalHeader>
         <Gnb>
-          <GnbLeft>
-            <GnbNav
-              navInfo={navInfo}
-              isActiveGnbNav={isActiveGnbNav}
-              setIsActiveGnbNav={setIsActiveGnbNav}
-            />
-            <GnbIconButton
-              className="is-menu sm-only"
-              ariaLabel="메뉴 열기 버튼"
-              iClassName="ic-menu"
-              type="button"
-              onClick={openSidebar}
-            />
-          </GnbLeft>
+          <GnbLeft
+            navInfo={navInfo}
+            isActiveGnbNav={isActiveGnbNav}
+            setIsActiveGnbNav={setIsActiveGnbNav}
+            setIsActiveSidebar={setIsActiveSidebar}
+          />
           <GnbRight
-            openSearchModal={openSearchModal}
             searchHistoryitems={searchHistoryitems}
             setSearchHistoryitems={setSearchHistoryitems}
+            setIsActiveSearchModal={setIsActiveSearchModal}
           />
         </Gnb>
 
@@ -107,8 +88,8 @@ function App() {
       </GlobalHeader>
       <Sidebar
         navInfo={navInfo}
-        isActiveSidebar={isActiveSidebar}
         isActiveGnbNav={isActiveGnbNav}
+        isActiveSidebar={isActiveSidebar}
       />
       <SearchModal
         isActiveSearchModal={isActiveSearchModal}
@@ -119,8 +100,8 @@ function App() {
 
       <Overlay
         isActiveSidebar={isActiveSidebar}
+        setIsActiveSidebar={setIsActiveSidebar}
         isActiveSearchModal={isActiveSearchModal}
-        onClick={closeSidebar}
       />
     </div>
   )

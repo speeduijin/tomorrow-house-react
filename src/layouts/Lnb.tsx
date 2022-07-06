@@ -3,19 +3,20 @@ import './Lnb.scss'
 
 interface LnbProps {
   navInfo: {
+    id: number
     localNavItems: string[]
   }[]
   isActiveGnbNav: boolean[]
 }
 
 function Lnb({ navInfo, isActiveGnbNav }: LnbProps) {
-  const gnbNavActive = navInfo.map((item, idx) => {
+  const gnbNavActive = navInfo.map((item) => {
     return (
-      isActiveGnbNav[idx] && (
+      isActiveGnbNav[item.id] && (
         <LocalNav
           classNameTitle={'Lnb'}
           localNavItems={item.localNavItems}
-          key={idx}
+          key={item.id}
         />
       )
     )

@@ -44,6 +44,7 @@ function SearchModal({
                 </button>
               </div>
             </header>
+
             <SearchHistory
               searchHistoryitems={searchHistoryitems}
               setSearchHistoryitems={setSearchHistoryitems}

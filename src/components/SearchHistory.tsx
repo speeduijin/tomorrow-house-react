@@ -1,9 +1,9 @@
 import './SearchHistory.scss'
 
 interface SearchHistoryProps {
-  isActiveSearchHistory?: boolean
   searchHistoryitems: string[]
   setSearchHistoryitems: React.Dispatch<React.SetStateAction<string[]>>
+  isActiveSearchHistory?: boolean
 }
 
 interface DeleteSearchHistoryItem {
@@ -11,12 +11,10 @@ interface DeleteSearchHistoryItem {
 }
 
 function SearchHistory({
-  isActiveSearchHistory,
   searchHistoryitems,
   setSearchHistoryitems,
+  isActiveSearchHistory,
 }: SearchHistoryProps) {
-  const isActive = isActiveSearchHistory ? 'is-active' : ''
-
   const deleteAllSearchHistoryItems = () => {
     setSearchHistoryitems([])
   }
@@ -26,42 +24,32 @@ function SearchHistory({
     setSearchHistoryitems(copySearchHistoryitems)
   }
 
-  function SearchHistoryList() {
+  const isActive = isActiveSearchHistory ? 'is-active' : ''
+
+  const empty = <p className="placeholder">최근 검색한 내역이 없습니다.</p>
+
+  const noEmpty = searchHistoryitems.map((item, idx) => {
     return (
-      <ol className="SearchHistory-list">
-        {searchHistoryitems.map((item, idx) => {
-          return (
-            <li className="SearchHistory-item" key={idx}>
-              <button className="word-button" type="button">
-                {item}
-              </button>
-              <button
-                className="delete-button"
-                type="button"
-                aria-label="검색어 삭제"
-                onClick={() => {
-                  deleteSearchHistoryItem(idx)
-                }}
-              >
-                <i className="ic-close"></i>
-              </button>
-            </li>
-          )
-        })}
-      </ol>
+      <li className="SearchHistory-item" key={idx}>
+        <button className="word-button" type="button">
+          {item}
+        </button>
+        <button
+          className="delete-button"
+          type="button"
+          aria-label="검색어 삭제"
+          onClick={() => {
+            deleteSearchHistoryItem(idx)
+          }}
+        >
+          <i className="ic-close"></i>
+        </button>
+      </li>
     )
-  }
+  })
 
-  const isEmpty =
-    searchHistoryitems.length === 0 ? (
-      <p className="placeholder">최근 검색한 내역이 없습니다.</p>
-    ) : (
-      <SearchHistoryList />
-    )
+  const item = searchHistoryitems.length === 0 ? empty : noEmpty
 
-  if (isActiveSearchHistory === true && searchHistoryitems.length === 0) {
-    return null
-  }
   return (
     <section className={`SearchHistory ${isActive}`}>
       <header className="SearchHistory-header">
@@ -71,7 +59,9 @@ function SearchHistory({
         </button>
       </header>
 
-      <div className="SearchHistory-content">{isEmpty}</div>
+      <div className="SearchHistory-content">
+        <ol className="SearchHistory-list">{item}</ol>
+      </div>
     </section>
   )
 }
