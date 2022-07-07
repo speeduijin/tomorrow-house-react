@@ -43,9 +43,9 @@ function GnbRight({
     setIsActiveSearchHistory(true)
   }
 
-  isActiveSearchHistory &&
-    searchHistoryitems.length === 0 &&
+  if (isActiveSearchHistory && searchHistoryitems.length === 0) {
     setIsActiveSearchHistory(false)
+  }
 
   return (
     <div className="GnbRight">

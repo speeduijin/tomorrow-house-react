@@ -9,7 +9,7 @@ interface DrawerMenuProps {
     localNavItems: string[]
     drawerMenuClassName: string
   }
-  isActiveGnbNav: boolean[]
+  isActiveGnbNavItem: boolean[]
   isOpenDrawerMenu: boolean[]
   setIsOpenDrawerMenu: React.Dispatch<React.SetStateAction<boolean[]>>
 }
@@ -20,7 +20,7 @@ interface HandleToggleDrawerMenu {
 
 function DrawerMenu({
   info,
-  isActiveGnbNav,
+  isActiveGnbNavItem,
   isOpenDrawerMenu,
   setIsOpenDrawerMenu,
 }: DrawerMenuProps) {
@@ -33,7 +33,7 @@ function DrawerMenu({
     setIsOpenDrawerMenu(copyIsOpenDrawerMenu)
   }
 
-  const isActiveGlobalNav = isActiveGnbNav[info.id] ? 'is-active' : ''
+  const isActiveGlobalNav = isActiveGnbNavItem[info.id] ? 'is-active' : ''
 
   const isOpen = isOpenDrawerMenu[info.id] ? 'is-open' : ''
 

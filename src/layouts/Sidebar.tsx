@@ -12,11 +12,15 @@ interface SidebarProps {
     localNavItems: string[]
     drawerMenuClassName: string
   }[]
-  isActiveGnbNav: boolean[]
+  isActiveGnbNavItem: boolean[]
   isActiveSidebar: boolean
 }
 
-function Sidebar({ navInfo, isActiveGnbNav, isActiveSidebar }: SidebarProps) {
+function Sidebar({
+  navInfo,
+  isActiveGnbNavItem,
+  isActiveSidebar,
+}: SidebarProps) {
   const userMenuInfo = ['마이페이지', '나의 쇼핑', '스크랩북', '알림', '이벤트']
 
   const isOpenDrawerMenuInit = Array(navInfo.length).fill(false)
@@ -61,7 +65,7 @@ function Sidebar({ navInfo, isActiveGnbNav, isActiveSidebar }: SidebarProps) {
             <DrawerMenu
               info={item}
               key={item.id}
-              isActiveGnbNav={isActiveGnbNav}
+              isActiveGnbNavItem={isActiveGnbNavItem}
               isOpenDrawerMenu={isOpenDrawerMenu}
               setIsOpenDrawerMenu={setIsOpenDrawerMenu}
             />

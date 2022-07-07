@@ -55,7 +55,9 @@ function App() {
   const isActiveGnbNavInit: boolean[] = Array(navInfo.length).fill(false)
   /* NOTE: '스토어' is-active 설정 */
   isActiveGnbNavInit[1] = true
-  const [isActiveGnbNav, setIsActiveGnbNav] = useState([...isActiveGnbNavInit])
+  const [isActiveGnbNavItem, setIsActiveGnbNavItem] = useState([
+    ...isActiveGnbNavInit,
+  ])
 
   const [isActiveSidebar, setIsActiveSidebar] = useState(false)
 
@@ -73,8 +75,8 @@ function App() {
         <Gnb>
           <GnbLeft
             navInfo={navInfo}
-            isActiveGnbNav={isActiveGnbNav}
-            setIsActiveGnbNav={setIsActiveGnbNav}
+            isActiveGnbNavItem={isActiveGnbNavItem}
+            setIsActiveGnbNavItem={setIsActiveGnbNavItem}
             setIsActiveSidebar={setIsActiveSidebar}
           />
           <GnbRight
@@ -84,11 +86,11 @@ function App() {
           />
         </Gnb>
 
-        <Lnb navInfo={navInfo} isActiveGnbNav={isActiveGnbNav} />
+        <Lnb navInfo={navInfo} isActiveGnbNav={isActiveGnbNavItem} />
       </GlobalHeader>
       <Sidebar
         navInfo={navInfo}
-        isActiveGnbNav={isActiveGnbNav}
+        isActiveGnbNavItem={isActiveGnbNavItem}
         isActiveSidebar={isActiveSidebar}
       />
       <SearchModal

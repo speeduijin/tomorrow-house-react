@@ -5,23 +5,27 @@ interface GnbNavProps {
     id: number
     globalNavItem: string
   }[]
-  isActiveGnbNav: boolean[]
-  setIsActiveGnbNav: React.Dispatch<React.SetStateAction<boolean[]>>
+  isActiveGnbNavItem: boolean[]
+  setIsActiveGnbNavItem: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
-function GnbNav({ navInfo, isActiveGnbNav, setIsActiveGnbNav }: GnbNavProps) {
+function GnbNav({
+  navInfo,
+  isActiveGnbNavItem,
+  setIsActiveGnbNavItem,
+}: GnbNavProps) {
   const gnbNavItems = navInfo.map((item) => {
     const moveGlobalNavItem = (event: React.MouseEvent<HTMLLIElement>) => {
       // 이동할 수 있는 페이지 없기 때문에
       event.preventDefault()
 
-      const copy = [...isActiveGnbNav]
+      const copy = [...isActiveGnbNavItem]
       copy[item.id] !== true && copy.fill(false)
       copy[item.id] = !copy[item.id]
-      setIsActiveGnbNav(copy)
+      setIsActiveGnbNavItem(copy)
     }
 
-    const isActive = isActiveGnbNav[item.id] ? 'is-active' : ''
+    const isActive = isActiveGnbNavItem[item.id] ? 'is-active' : ''
 
     return (
       <li

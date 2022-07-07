@@ -7,15 +7,15 @@ interface GnbLeftProps {
     id: number
     globalNavItem: string
   }[]
-  isActiveGnbNav: boolean[]
-  setIsActiveGnbNav: React.Dispatch<React.SetStateAction<boolean[]>>
+  isActiveGnbNavItem: boolean[]
+  setIsActiveGnbNavItem: React.Dispatch<React.SetStateAction<boolean[]>>
   setIsActiveSidebar: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 function GnbLeft({
   navInfo,
-  isActiveGnbNav,
-  setIsActiveGnbNav,
+  isActiveGnbNavItem,
+  setIsActiveGnbNavItem,
   setIsActiveSidebar,
 }: GnbLeftProps) {
   const openSidebar = () => {
@@ -28,8 +28,8 @@ function GnbLeft({
 
       <GnbNav
         navInfo={navInfo}
-        isActiveGnbNav={isActiveGnbNav}
-        setIsActiveGnbNav={setIsActiveGnbNav}
+        isActiveGnbNavItem={isActiveGnbNavItem}
+        setIsActiveGnbNavItem={setIsActiveGnbNavItem}
       />
 
       <GnbIconButton
