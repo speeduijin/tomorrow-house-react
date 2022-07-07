@@ -4,6 +4,7 @@ import Gnb from './layouts/Gnb'
 import GnbLeft from './layouts/GnbLeft'
 import GnbRight from './layouts/GnbRight'
 import Lnb from './layouts/Lnb'
+import GlobalFooter from './layouts/GlobalFooter'
 import Sidebar from './layouts/Sidebar'
 import SearchModal from './layouts/SearchModal'
 import Overlay from './layouts/Overlay'
@@ -88,6 +89,7 @@ function App() {
 
         <Lnb navInfo={navInfo} isActiveGnbNav={isActiveGnbNavItem} />
       </GlobalHeader>
+      <GlobalFooter />
       <Sidebar
         navInfo={navInfo}
         isActiveGnbNavItem={isActiveGnbNavItem}

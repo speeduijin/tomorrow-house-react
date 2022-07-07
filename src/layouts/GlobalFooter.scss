@@ -1,0 +1,77 @@
+@use "../styles/constants" as const;
+@use "../styles/mixins/" as mixin;
+
+.GlobalFooter {
+  padding-top: 32px;
+  padding-bottom: 40px;
+  margin-bottom: const.$order-cta-height;
+  background-color: const.$background;
+
+  &-title {
+    @include mixin.text-style(13, const.$dark);
+    font-weight: 700;
+
+    .ic-chevron {
+      display: inline-block;
+      font-size: 12px;
+      transform: rotate(-90deg);
+    }
+  }
+
+  &-contact {
+    @include mixin.text-style(24, const.$dark);
+    font-weight: 700;
+  }
+
+  &-time {
+    @include mixin.text-style(12, const.$primary);
+    margin-bottom: 24px;
+  }
+
+  &-detail-list {
+    font-size: 10px;
+    line-height: 16px;
+    color: const.$secondary;
+    letter-spacing: -0.01em;
+  }
+
+  &-detail-item {
+    @include mixin.flexbox(start);
+
+    address {
+      display: inline;
+    }
+
+    dt::after {
+      margin: 0 2px;
+      content: ":";
+    }
+  }
+
+  @include mixin.responsive(D) {
+    margin-bottom: 0;
+
+    &-title {
+      @include mixin.text-style(14);
+    }
+
+    &-contact:hover {
+      opacity: 0.5;
+    }
+
+    &-detail-list {
+      @include mixin.flexbox(start);
+    }
+
+    &-detail-item {
+      a:hover {
+        text-decoration: underline;
+      }
+
+      &:not(:last-child)::after {
+        margin: 0 8px;
+        content: "|";
+      }
+    }
+  }
+}
