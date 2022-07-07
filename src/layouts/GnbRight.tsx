@@ -43,10 +43,6 @@ function GnbRight({
     setIsActiveSearchHistory(true)
   }
 
-  if (isActiveSearchHistory && searchHistoryitems.length === 0) {
-    setIsActiveSearchHistory(false)
-  }
-
   return (
     <div className="GnbRight">
       <div className="Gnb-search lg-only" ref={gnbSearchRef}>

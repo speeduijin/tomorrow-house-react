@@ -24,7 +24,8 @@ function SearchHistory({
     setSearchHistoryitems(copySearchHistoryitems)
   }
 
-  const isActive = isActiveSearchHistory ? 'is-active' : ''
+  const isActive =
+    isActiveSearchHistory && searchHistoryitems.length !== 0 ? 'is-active' : ''
 
   const empty = <p className="placeholder">최근 검색한 내역이 없습니다.</p>
 
