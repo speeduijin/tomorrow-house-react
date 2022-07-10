@@ -1,8 +1,9 @@
 import BreadCrumb from '../components/BreadCrumb'
+import ProductCarousel from '../components/ProductCarousel'
 
 function ProductShow() {
   return (
-    <main className="product-show">
+    <main className="ProductShow">
       <div className="container">
         <div className="row">
           <div className="col-sm-4">
@@ -10,118 +11,12 @@ function ProductShow() {
           </div>
         </div>
 
-        {/* <div className="row">
+        <div className="row">
           <div className="col-sm-4 col-md-6 col-lg-7">
-            <div className="product-carousel" role="region">
-              <div className="product-carousel-slider">
-                <ol className="slider-list">
-                  <li
-                    className="slider-item"
-                    role="tabpanel"
-                    aria-labelledby="product-carousel-tab-1"
-                  >
-                    <figure>
-                      <img src="./assets/images/img-product-01.jpg" alt="" />
-                      <figcaption className="visually-hidden">
-                        보아르 전기히터 상세 이미지 1
-                      </figcaption>
-                    </figure>
-                  </li>
-                  <li
-                    className="slider-item"
-                    role="tabpanel"
-                    aria-labelledby="product-carousel-tab-2"
-                  >
-                    <figure>
-                      <img src="./assets/images/img-product-02.jpg" alt="" />
-                      <figcaption className="visually-hidden">
-                        보아르 전기히터 상세 이미지 2
-                      </figcaption>
-                    </figure>
-                  </li>
-                  <li
-                    className="slider-item"
-                    role="tabpanel"
-                    aria-labelledby="product-carousel-tab-3"
-                  >
-                    <figure>
-                      <img src="./assets/images/img-product-03.jpg" alt="" />
-                      <figcaption className="visually-hidden">
-                        보아르 전기히터 상세 이미지 3
-                      </figcaption>
-                    </figure>
-                  </li>
-                  <li
-                    className="slider-item"
-                    role="tabpanel"
-                    aria-labelledby="product-carousel-tab-4"
-                  >
-                    <figure>
-                      <img src="./assets/images/img-product-04.jpg" alt="" />
-                      <figcaption className="visually-hidden">
-                        보아르 전기히터 상세 이미지 4
-                      </figcaption>
-                    </figure>
-                  </li>
-                </ol>
-              </div>
-
-              <div className="product-carousel-thumbnail">
-                <ol className="thumbnail-list" role="tablist">
-                  <li
-                    className="thumbnail-item"
-                    id="product-carousel-tab-1"
-                    role="tab"
-                  >
-                    <button type="button">
-                      <img
-                        src="./assets/images/img-product-01.jpg"
-                        alt="1번 이미지"
-                      />
-                    </button>
-                  </li>
-                  <li
-                    className="thumbnail-item"
-                    id="product-carousel-tab-2"
-                    role="tab"
-                  >
-                    <button type="button">
-                      <img
-                        src="./assets/images/img-product-02.jpg"
-                        alt="2번 이미지"
-                      />
-                    </button>
-                  </li>
-                  <li
-                    className="thumbnail-item"
-                    id="product-carousel-tab-3"
-                    role="tab"
-                  >
-                    <button type="button">
-                      <img
-                        src="./assets/images/img-product-03.jpg"
-                        alt="3번 이미지"
-                      />
-                    </button>
-                  </li>
-                  <li
-                    className="thumbnail-item"
-                    id="product-carousel-tab-4"
-                    role="tab"
-                  >
-                    <button type="button">
-                      <img
-                        src="./assets/images/img-product-04.jpg"
-                        alt="4번 이미지"
-                      />
-                    </button>
-                  </li>
-                </ol>
-              </div>
-            </div>
+            <ProductCarousel />
           </div>
 
-          <div className="col-sm-4 col-md-6 col-lg-5">
+          {/* <div className="col-sm-4 col-md-6 col-lg-5">
             <section className="product-info">
               <header className="product-info-header">
                 <a className="info-brand" href="/">보아르</a>
@@ -334,10 +229,10 @@ function ProductShow() {
                 </button>
               </div>
             </form>
-          </div>
+          </div> */}
         </div>
 
-        <div className="row sm-only">
+        {/* <div className="row sm-only">
           <div className="col-sm-4">
             <div className="product-section-divider" aria-hidden></div>
             <section className="product-section product-user-gallery">
