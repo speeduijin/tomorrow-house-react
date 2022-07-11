@@ -19,7 +19,7 @@ function Overlay({
 
   return (
     <div
-      className={`Overlay ${isActive}`}
+      className={`Overlay lg-hidden ${isActive}`}
       aria-hidden
       onClick={closeSidebar}
     ></div>
