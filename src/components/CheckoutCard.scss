@@ -1,0 +1,82 @@
+@use "../styles/constants" as const;
+@use "../styles/mixins" as mixin;
+
+.CheckoutCard {
+  position: relative;
+  padding: 8px 10px 8px 12px;
+  background-color: const.$background;
+  border-radius: 4px;
+
+  .checkout-header {
+    margin-bottom: 8px;
+  }
+
+  .checkout-title {
+    @include mixin.text-style(13, const.$primary);
+    padding-right: 36px - 10px;
+    font-weight: 400;
+  }
+
+  .delete-button {
+    @include mixin.inline-flexbox;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: const.$secondary;
+
+    &:hover,
+    &:active {
+      opacity: 0.4;
+    }
+  }
+
+  .checkout-select {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+      select {
+        border-color: const.$tertiary;
+      }
+
+      i {
+        color: const.$secondary;
+      }
+    }
+
+    select {
+      @include mixin.text-style(14, const.$primary);
+      width: 72px;
+      height: 24px;
+      padding: 0 8px;
+      line-height: 1;
+      background-color: const.$white;
+      border: 1px solid const.$border;
+      border-radius: 3px;
+      transition: border-color 100ms ease-in-out;
+      appearance: none;
+    }
+
+    i {
+      @include mixin.pos-center-y;
+      right: 2px;
+      font-size: 20px;
+      color: const.$tertiary;
+      pointer-events: none;
+      transition: color 100ms ease-in-out;
+    }
+  }
+
+  .checkout-footer {
+    @include mixin.flexbox(between);
+  }
+
+  @include mixin.responsive(D) {
+    .checkout-title {
+      @include mixin.text-style(16);
+    }
+  }
+}
