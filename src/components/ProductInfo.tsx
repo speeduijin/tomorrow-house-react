@@ -25,35 +25,6 @@ function ProductInfo() {
         </div>
       </header>
 
-      <div className="ProductInfo-price sm-only">
-        <div className="info-original-price">
-          <div className="discount-rate">
-            <span className="rate">34</span>
-            <span className="percent">%</span>
-          </div>
-
-          <div className="price-off">
-            <strong className="amount">49,900</strong>
-            <span className="currency sm-hidden">원</span>
-          </div>
-        </div>
-
-        <div className="info-sale-price">
-          <div className="price-20">
-            {/*다른점 */}
-            <strong className="amount">32,900</strong>
-            <span className="currency">원</span>
-          </div>
-
-          <strong className="tag-red"> 특가 </strong>
-        </div>
-
-        <p className="info-point">
-          <strong aria-label="987 포인트">987P</strong>
-          적립해드립니다. (VIP 3배 혜택 적용됨)
-        </p>
-      </div>
-
       {/* NOTE: 모바일용 가격 */}
       <div className="ProductInfo-price sm-only">
         <div className="info-original-price">
