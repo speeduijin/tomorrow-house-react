@@ -3,10 +3,11 @@
 
 .Lnb {
   $lnb-link-padding: 8px;
-
-  @include mixin.no-scrollbar;
   overflow-x: auto;
   background-color: const.$white;
+  border-bottom: 1px solid const.$border;
+
+  @include mixin.no-scrollbar;
 
   &-list {
     @include mixin.inline-flexbox(start);
@@ -14,7 +15,6 @@
     padding: 0 #{const.$grid-margin - $lnb-link-padding};
     margin-left: -#{const.$grid-margin};
     white-space: nowrap;
-    border-bottom: 1px solid const.$border;
   }
 
   &-item {
@@ -42,7 +42,6 @@
   @include mixin.responsive(T) {
     height: const.$lnb-height-md;
     overflow-x: visible;
-    border-bottom: 1px solid const.$border;
 
     &-list {
       height: auto;
