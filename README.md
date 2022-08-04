@@ -1,5 +1,24 @@
 # 내일의 집 (React Refactoring)
 
+## 🌟 서비스 소개
+
+
+
+##  사용 기술
+
+<p align='center'>
+    <img src="https://img.shields.io/badge/Typescript-v4.7.3-#3178C6?logo=typescript"/>
+    <img src="https://img.shields.io/badge/React-v18.1.0-#61DAFB?logo=React"/>
+    <img src="https://img.shields.io/badge/SCSS-v1.52.3-#CC6699?logo=Sass">
+</p>
+    
+## 🌟 주요 기능
+
+### 🎇 로그인
+
+
+
+
 ### 1. GlobalHeader
 
 - Sidebar(모바일)와 GNB의 active 상태를 같은 state로 적용(추가)
