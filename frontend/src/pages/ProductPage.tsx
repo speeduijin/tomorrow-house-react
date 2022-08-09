@@ -75,7 +75,6 @@ function ProductPage() {
 
   return (
     <div>
-      {' '}
       <GlobalHeader>
         <Gnb>
           <GnbLeft
