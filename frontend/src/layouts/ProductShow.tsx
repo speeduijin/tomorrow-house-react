@@ -21,7 +21,7 @@ function ProductShow() {
           <div className="col-sm-4 col-md-6 col-lg-5">
             <ProductInfo />
 
-            <OrderForm />
+            {/* <OrderForm /> */}
           </div>
         </div>
 
