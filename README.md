@@ -4,7 +4,7 @@
 
 쇼핑몰 사이트 "오늘의 집"을 클론한 "내일의 집"을 React로 리팩토링 및 기능 추가 하는 반응형 웹 프로젝트
 
-배포 : [https://tomorrow-house-react.herokuapp.com/](https://tomorrow-house-react.herokuapp.com/)
+배포 : [https://tomorrow-house-react.herokuapp.com](https://tomorrow-house-react.herokuapp.com)
 
 ### ✨ 사용 기술
 
@@ -49,7 +49,7 @@
 
 #### 🎇 Local Navigation Bar
 
-- Global Navigationbar의 아이템 클릭시 하위 네비게이션 아이템 랜더링 기능 추가 및 active 표현(보완 필요)
+- Global Navigation Bar의 아이템 클릭시 하위 네비게이션 아이템 랜더링 기능 추가 및 active 표현(보완 필요)
 
 #### 🎇 Product carousel
 
@@ -72,9 +72,13 @@
 
 - 리펙터링 및 리뷰 탭 DB 연결
 
+---
+
 ### ✨ 회원가입(진행예정)
 
 - 페이지 추가
+
+---
 
 ### ✨ 로그인(진행예정)
 
