@@ -2,6 +2,7 @@ import BreadCrumb from '../components/BreadCrumb'
 import ProductCarousel from '../components/ProductCarousel'
 import ProductInfo from '../components/ProductInfo'
 import OrderForm from '../components/OrderForm'
+import ProductUserGallery from '../components/ProductUserGallery'
 import ProductSectionDivider from '../components/ProductSectionDivider'
 
 function ProductShow() {
@@ -30,12 +31,7 @@ function ProductShow() {
         <div className="row sm-only">
           <div className="col-sm-4">
             <ProductSectionDivider />
-            <div>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Consequatur dolorem maiores doloribus ipsam iusto doloremque harum
-              corrupti inventore labore? Ex natus earum magni, ipsum corrupti
-              ratione ab repellendus facere ut.
-            </div>
+            <ProductUserGallery />
             <ProductSectionDivider addClassName="is-big" />
           </div>
         </div>
