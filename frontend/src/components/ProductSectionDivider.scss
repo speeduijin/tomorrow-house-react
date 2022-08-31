@@ -1,0 +1,11 @@
+@use "../styles/constants" as const;
+
+.ProductSectionDivider {
+  height: 8px;
+  margin: 0 -#{const.$grid-margin};
+  background-color: const.$border;
+
+  &.is-big {
+    height: 24px;
+  }
+}
