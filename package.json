@@ -1,24 +1,57 @@
 {
   "name": "tomorrow-house-react",
-  "version": "1.0.0",
-  "description": "\"오늘의 집\"을 클론한 \"내일의 집\"을 React로 리팩토링 및 기능 추가 하는 프로젝트입니다.",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.3",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.38",
+    "@types/react": "^18.0.12",
+    "@types/react-dom": "^18.0.5",
+    "@types/react-slick": "^0.23.10",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "typescript": "^4.7.3",
+    "web-vitals": "^2.1.4"
+  },
   "scripts": {
-    "frontend-build": "cd frontend && npm ci && npm run build && cd ../",
-    "backend-build": "cd backend && npm ci --dev && npm run build && cd ../",
-    "heroku-prebuild": "npm run frontend-build && npm run backend-build && mv ./frontend/build ./backend/dist/",
-    "start": "cd backend && npm run start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "sass": "sass -w ./src/styles/common.scss ./src/index.css"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/speeduijin/tomorrow-house-react.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/speeduijin/tomorrow-house-react/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
-  "homepage": "https://github.com/speeduijin/tomorrow-house-react#readme"
+  "devDependencies": {
+    "sass": "^1.52.3",
+    "stylelint": "^14.9.1",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard-scss": "^4.0.0"
+  }
 }
