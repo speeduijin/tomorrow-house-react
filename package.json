@@ -53,5 +53,6 @@
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard-scss": "^4.0.0"
-  }
+  },
+  "homepage": "https://speeduijin.github.io/tomorrow-house-react"
 }
