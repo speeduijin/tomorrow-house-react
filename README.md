@@ -12,7 +12,6 @@
     <img src="https://img.shields.io/badge/Typescript-v4.7.3-3178C6?logo=typescript"/>
     <img src="https://img.shields.io/badge/React-v18.1.0-61DAFB?logo=React"/>
     <img src="https://img.shields.io/badge/SCSS-v1.52.3-CC6699?logo=Sass">
-    <img src="https://img.shields.io/badge/Heroku-v7.62.0-430098?logo=Heroku">
 </p>
 
 ## 🌟 주요 기능
